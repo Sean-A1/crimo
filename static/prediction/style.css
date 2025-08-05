@@ -1,0 +1,14 @@
+.alert-warning {
+    background-color: #fef7e0;
+    border-color: #fce7ae;
+}
+
+.alert-success {
+    background-color: #e8f9e8;
+    border-color: #c7e8c8;
+}
+
+.card-header.bg-light {
+    background-color: #e7f5ff;
+    font-weight: bold;
+}

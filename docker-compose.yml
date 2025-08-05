@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    container_name: mysite-web
+    
+    command: >
+      sh -c "python manage.py makemigrations &&
+              python manage.py migrate &&
+              python manage.py import_players &&
+              python manage.py import_schedules &&
+              python manage.py runserver 0.0.0.0:8000"
+
+    volumes:
+      - .:/app  # 로컬 코드를 컨테이너 내부로 마운트
+      - dbdata:/app/db
+      - logs:/app/logs
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.local
+
+    # 만약 .env 사용할 경우 아래 주석 해제
+    # env_file:
+    #   - .env
+
+volumes:
+  dbdata:  
+  logs:

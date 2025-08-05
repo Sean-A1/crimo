@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter notebooks
+*.ipynb
+
+# Logs and media
+*.log
+logs/
+media/
+*.sqlite3
+
+# IDE/editor settings
+.vscode/
+.idea/
+.DS_Store
+
+# Env files
+.env
+
+# Git-related
+.git/
+.gitignore

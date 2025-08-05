@@ -1,0 +1,14 @@
+.team-card {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.team-card img {
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}

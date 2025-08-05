@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 답변 수정-->
+<!-- 답변 수정은 답변 등록 템플릿이 따로 없으므로 답변 수정에 사용할 템플릿이 추가로 필요-->
+<!-- 답변 등록은 질문 상세 화면 아래쪽에 텍스트 입력 창을 추가하여 만든 것이므로 질문 상세 템플릿을 답변 수정용으로 사용하는 데는 적합하지 않다.-->
+<div class="container my-3">
+    <form method="post">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="content" class="form-label">답변내용</label>
+            <textarea class="form-control" name="content" id="content"
+                      rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}

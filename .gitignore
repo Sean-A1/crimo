@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+*.py[cod]
+*.egg-info/
+__pycache__/
+*.so
+*.log
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+
+.vscode/
+db/
+logs/
+
+.env
+
+
+

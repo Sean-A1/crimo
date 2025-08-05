@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static_league %}
+{% load static_league team_color %}
+
+
+{% block content %}
+<!-- 📦 팀 카드 스타일 CSS 연결 -->
+<link rel="stylesheet" href="{% static 'teams/style.css' %}">
+
+<div class="container my-3">
+    <div class="row">
+        {% for team in team_list %}
+        <div class="col-md-6 mb-3">
+            <a href="{% url 'team:player_list' league team.id %}"
+                class="team-card btn w-100 text-white"
+                style="background-color: {% team_color team.team_id %};">
+                <img src="{% static_team_logo team.team_id league %}" class="team-logo">
+                {{ team.team_id }}
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

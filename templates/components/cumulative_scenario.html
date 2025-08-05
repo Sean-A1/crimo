@@ -1,0 +1,65 @@
+{% load static %}
+<!-- 총 득점 시나리오 그래프 컴포넌트 -->
+<div class="card mt-4">
+    <div class="card-header bg-light">
+        📊 총 득점 시나리오
+    </div>
+    <div class="card-body">
+        <canvas id="cumulativeChart"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const inning_labels = ['1회', '2회', '3회', '4회', '5회', '6회', '7회', '8회', '9회'];
+
+    const scenario_team1 = {{ scenario_team1|safe }};
+    const scenario_team2 = {{ scenario_team2|safe }};
+
+    const cumulativeTeam1 = scenario_team1.reduce((acc, cur, idx) => {
+        acc.push((acc[idx - 1] || 0) + cur);
+        return acc;
+    }, []);
+
+    const cumulativeTeam2 = scenario_team2.reduce((acc, cur, idx) => {
+        acc.push((acc[idx - 1] || 0) + cur);
+        return acc;
+    }, []);
+
+    const cumulativeCtx = document.getElementById('cumulativeChart').getContext('2d');
+    new Chart(cumulativeCtx, {
+        type: 'line',
+        data: {
+            labels: inning_labels,
+            datasets: [
+                {
+                    label: '{{ main_event.team1 }} 총 득점',
+                    data: cumulativeTeam1,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                },
+                {
+                    label: '{{ main_event.team2 }} 총 득점',
+                    data: cumulativeTeam2,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+</script>

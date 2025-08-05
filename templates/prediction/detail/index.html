@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static_league %}
+
+{% block content %}
+
+
+<!-- 그래프 -->
+<!-- Prediction 앱 전용 CSS -->
+<link rel="stylesheet" href="{% static 'prediction/style.css' %}">
+
+<div class="container my-4">
+
+    <!-- 제목 -->
+    <h2 class="mb-4">{{ schedule.team1 }} vs {{ schedule.team2 }} 상세 예측정보</h2>
+
+    <!-- 연노랑색 업데이트 현황 박스 -->
+    <div class="alert alert-warning">
+        📌 업데이트 현황: 2025년 {{ schedule.month }}월 {{ schedule.date }}일 예측 데이터 업데이트
+    </div>
+
+    <!-- 연초록색 상세 정보 박스 -->
+    <div class="alert alert-success">
+        📋 <strong>상세 정보</strong><br>
+        🔹 날짜: {{ schedule.month }}/{{ schedule.date }}<br>
+        🔹 경기장: {{ schedule.stadium }}<br>
+        🔹 승률 예측: {{ schedule.team1 }}({{ schedule.win_prob_team1 }}%) vs {{ schedule.team2 }}({{ schedule.win_prob_team2 }}%)<br>
+    </div>
+
+    <!-- 그래프 섹션 -->
+    <div class="card mt-4">
+
+        <!-- 득점 -->
+        <div class="card-header bg-light">
+            📊 득점 시나리오
+        </div>
+
+        <div class="card-body">
+            <canvas id="scoreChart"></canvas>
+        </div>
+
+        <!-- 총 득점 -->
+        <div class="card-header bg-light">
+            📊 총 득점 시나리오
+        </div>
+
+        <div class="card-body">
+            <canvas id="cumulativeChart"></canvas>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const inning_labels = ['1회', '2회', '3회', '4회', '5회', '6회', '7회', '8회', '9회'];
+    const scenario_team1 = {{ scenario_team1|safe }};
+    const scenario_team2 = {{ scenario_team2|safe }};
+
+    // ✔ 총 득점 누적 데이터 생성
+    const cumulativeTeam1 = scenario_team1.reduce((acc, cur, idx) => {
+        acc.push((acc[idx - 1] || 0) + cur);
+        return acc;
+    }, []);
+
+    const cumulativeTeam2 = scenario_team2.reduce((acc, cur, idx) => {
+        acc.push((acc[idx - 1] || 0) + cur);
+        return acc;
+    }, []);
+
+    // ✔ 득점 시나리오 차트 (정수만)
+    const scoreCtx = document.getElementById('scoreChart').getContext('2d');
+    new Chart(scoreCtx, {
+        type: 'line',
+        data: {
+            labels: inning_labels,
+            datasets: [
+                {
+                    label: '{{ schedule.team1 }} 득점 시나리오',
+                    data: scenario_team1,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                },
+                {
+                    label: '{{ schedule.team2 }} 득점 시나리오',
+                    data: scenario_team2,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }  // ✅ 정수만 표시
+                }
+            }
+        }
+    });
+
+    // ✔ 총 득점 시나리오 차트
+    const cumulativeCtx = document.getElementById('cumulativeChart').getContext('2d');
+    new Chart(cumulativeCtx, {
+        type: 'line',
+        data: {
+            labels: inning_labels,
+            datasets: [
+                {
+                    label: '{{ schedule.team1 }} 총 득점',
+                    data: cumulativeTeam1,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                },
+                {
+                    label: '{{ schedule.team2 }} 총 득점',
+                    data: cumulativeTeam2,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }  // ✅ 정수만 표시
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

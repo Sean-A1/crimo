@@ -1,0 +1,151 @@
+,backnumber,player_id,team_id,position,birthday,profile,school,ai_score,stat
+0,58,Noah Murdock,OAK,Pitcher,08/20/1998,"203cm, 93kg",N/A,71,20
+1,45,Osvaldo Bido,OAK,Pitcher,10/18/1995,"191cm, 79kg",N/A,100,93
+2,12,Max Schuemann,OAK,Third Base,06/11/1997,"183cm, 84kg",N/A,58,92
+3,36,Hogan Harris,OAK,Pitcher,12/26/1996,"191cm, 104kg",N/A,79,52
+4,33,JJ Bleday,OAK,Outfielder,11/10/1997,"188cm, 93kg",N/A,71,80
+5,43,Ryan Borucki,PIT,Pitcher,03/31/1994,"193cm, 95kg",N/A,65,97
+6,45,Andrew Heaney,PIT,Pitcher,06/05/1991,"188cm, 91kg",N/A,93,5
+7,22,Andrew McCutchen,PIT,Outfielder,10/10/1986,"178cm, 86kg",N/A,89,72
+8,62,Matt Gorski,PIT,Outfielder,12/22/1997,"188cm, 100kg",N/A,69,97
+9,50,Carmen Mlodzinski,PIT,Pitcher,02/19/1999,"188cm, 100kg",N/A,92,35
+10,30,Gavin Sheets,SD,Outfielder,04/23/1996,"191cm, 107kg",N/A,100,34
+11,75,Robert Suarez,SD,Pitcher,03/01/1991,"188cm, 95kg",N/A,52,53
+12,50,Adrian Morejon,SD,Pitcher,02/27/1999,"180cm, 102kg",N/A,77,92
+13,34,Michael King,SD,Pitcher,05/25/1995,"191cm, 95kg",N/A,61,38
+14,40,Jason Adam,SD,Pitcher,08/04/1991,"191cm, 104kg",N/A,80,63
+15,58,Luis Castillo,SEA,Pitcher,12/12/1992,"188cm, 91kg",N/A,61,2
+16,54,Carlos Vargas,SEA,Pitcher,10/13/1999,"193cm, 95kg",N/A,61,56
+17,83,Eduard Bazardo,SEA,Pitcher,09/01/1995,"183cm, 86kg",N/A,82,34
+18,29,Cal Raleigh,SEA,Catcher,11/26/1996,"188cm, 107kg",N/A,70,94
+19,26,Emerson Hancock,SEA,Pitcher,05/31/1999,"193cm, 97kg",N/A,85,66
+20,14,Patrick Bailey,SF,Catcher,05/29/1999,"183cm, 102kg",N/A,91,8
+21,75,Camilo Doval,SF,Pitcher,07/04/1997,"188cm, 93kg",N/A,50,55
+22,38,Robbie Ray,SF,Pitcher,10/01/1991,"188cm, 94kg",N/A,92,79
+23,35,Justin Verlander,SF,Pitcher,02/20/1983,"196cm, 109kg",N/A,59,16
+24,50,Christian Koss,SF,Second Base,01/27/1998,"185cm, 84kg",N/A,75,63
+25,47,John King,STL,Pitcher,09/14/1994,"188cm, 98kg",N/A,78,62
+26,56,Ryan Helsley,STL,Pitcher,07/18/1994,"188cm, 107kg",N/A,75,16
+27,62,Kyle Leahy,STL,Pitcher,06/04/1997,"196cm, 102kg",N/A,85,22
+28,39,Miles Mikolas,STL,Pitcher,08/23/1988,"193cm, 104kg",N/A,96,29
+29,40,Willson Contreras,STL,First Base,05/13/1992,"185cm, 109kg",N/A,78,33
+30,44,Ryan Pepiot,TB,Pitcher,08/21/1997,"191cm, 95kg",N/A,70,27
+31,13,Junior Caminero,TB,Third Base,07/05/2003,"185cm, 100kg",N/A,55,74
+32,29,Pete Fairbanks,TB,Pitcher,12/16/1993,"198cm, 107kg",N/A,59,98
+33,57,Drew Rasmussen,TB,Pitcher,07/27/1995,"185cm, 109kg",N/A,66,68
+34,2,Yandy Díaz,TB,First Base,08/08/1991,"185cm, 107kg",N/A,99,59
+35,53,Adolis García,TEX,Outfielder,03/02/1993,"183cm, 93kg",N/A,68,92
+36,6,Josh Jung,TEX,Third Base,02/12/1998,"185cm, 97kg",N/A,58,31
+37,55,Chris Martin,TEX,Pitcher,06/02/1986,"203cm, 102kg",N/A,51,100
+38,28,Jonah Heim,TEX,Catcher,06/27/1995,"193cm, 100kg",N/A,56,85
+39,43,Shawn Armstrong,TEX,Pitcher,09/11/1990,"188cm, 102kg",N/A,80,86
+40,34,Kevin Gausman,TOR,Pitcher,01/06/1991,"188cm, 93kg",N/A,95,31
+41,27,Vladimir Guerrero Jr.,TOR,First Base,03/16/1999,"183cm, 111kg",N/A,75,25
+42,4,George Springer,TOR,Outfielder,09/19/1989,"185cm, 100kg",N/A,98,53
+43,47,Addison Barger,TOR,Outfielder,11/12/1999,"183cm, 95kg",N/A,91,4
+44,30,Alejandro Kirk,TOR,Catcher,11/06/1998,"173cm, 111kg",N/A,84,13
+45,2,Brooks Lee,MIN,Third Base,02/14/2001,"185cm, 93kg",N/A,56,95
+46,54,Danny Coulombe,MIN,Pitcher,10/26/1989,"178cm, 86kg",N/A,66,56
+47,12,Harrison Bader,MIN,Outfielder,06/03/1994,"180cm, 95kg",N/A,52,18
+48,24,Simeon Woods Richardson,MIN,Pitcher,09/27/2000,"191cm, 95kg",N/A,83,86
+49,27,Ryan Jeffers,MIN,Catcher,06/03/1997,"191cm, 107kg",N/A,53,86
+50,37,Weston Wilson,PHI,Outfielder,09/11/1994,"191cm, 98kg",N/A,88,76
+51,99,Taijuan Walker,PHI,Pitcher,08/13/1992,"193cm, 107kg",N/A,52,100
+52,12,Kyle Schwarber,PHI,Outfielder,03/05/1993,"180cm, 104kg",N/A,71,51
+53,28,Alec Bohm,PHI,Third Base,08/03/1996,"196cm, 99kg",N/A,98,42
+54,10,J.T. Realmuto,PHI,Catcher,03/18/1991,"183cm, 96kg",N/A,53,89
+55,26,Raisel Iglesias,ATL,Pitcher,01/04/1990,"188cm, 86kg",N/A,64,21
+56,27,Austin Riley,ATL,Third Base,04/02/1997,"188cm, 102kg",N/A,99,27
+57,23,Michael Harris II,ATL,Outfielder,03/07/2001,"183cm, 89kg",N/A,92,97
+58,48,Rafael Montero,ATL,Pitcher,10/17/1990,"183cm, 88kg",N/A,55,91
+59,49,Aaron Bummer,ATL,Pitcher,09/21/1993,"191cm, 98kg",N/A,97,41
+60,31,Bobby Dalbec,CWS,First Base,06/29/1995,"191cm, 102kg",N/A,93,87
+61,23,Andrew Benintendi,CWS,Outfielder,07/06/1994,"178cm, 84kg",N/A,61,16
+62,63,Penn Murfee,CWS,Pitcher,05/02/1994,"188cm, 93kg",N/A,53,99
+63,27,Brooks Baldwin,CWS,Outfielder,08/15/2000,"185cm, 89kg",N/A,91,2
+64,8,Jacob Amaya,CWS,Shortstop,09/03/1998,"178cm, 82kg",N/A,79,13
+65,21,Graham Pauley,MIA,Third Base,09/24/2000,"185cm, 91kg",N/A,88,29
+66,33,Eric Wagaman,MIA,First Base,08/14/1997,"193cm, 95kg",N/A,99,47
+67,41,Ronny Simon,MIA,Second Base,04/17/2000,"173cm, 68kg",N/A,91,66
+68,22,Sandy Alcantara,MIA,Pitcher,09/07/1995,"196cm, 91kg",N/A,81,13
+69,76,Luarbert Arias,MIA,Pitcher,12/12/2000,"188cm, 80kg",N/A,56,12
+70,11,Anthony Volpe,NYY,Shortstop,04/28/2001,"178cm, 82kg",N/A,51,51
+71,30,Luke Weaver,NYY,Pitcher,08/21/1993,"188cm, 83kg",N/A,62,0
+72,12,Trent Grisham,NYY,Outfielder,11/01/1996,"178cm, 102kg",N/A,71,78
+73,68,Tyler Matzek,NYY,Pitcher,10/19/1990,"191cm, 104kg",N/A,75,98
+74,99,Aaron Judge,NYY,Outfielder,04/26/1992,"201cm, 128kg",N/A,52,80
+75,2,Brice Turang,MIL,Second Base,11/21/1999,"180cm, 86kg",N/A,83,16
+76,48,Craig Yoho,MIL,Pitcher,10/23/1999,"188cm, 107kg",N/A,74,92
+77,56,Grant Anderson,MIL,Pitcher,06/21/1997,"183cm, 93kg",N/A,87,93
+78,12,Rhys Hoskins,MIL,First Base,03/17/1993,"191cm, 109kg",N/A,95,61
+79,22,Christian Yelich,MIL,Outfielder,12/05/1991,"191cm, 92kg",N/A,74,3
+80,59,José Soriano,LAA,Pitcher,10/20/1998,"191cm, 100kg",N/A,87,78
+81,28,Kyle Hendricks,LAA,Pitcher,12/07/1989,"191cm, 86kg",N/A,57,5
+82,31,Tyler Anderson,LAA,Pitcher,12/30/1989,"188cm, 100kg",N/A,71,98
+83,18,Nolan Schanuel,LAA,First Base,02/14/2002,"188cm, 100kg",N/A,88,17
+84,39,Jake Eder,LAA,Pitcher,10/09/1998,"193cm, 102kg",N/A,89,28
+85,30,Scott McGough,ARI,Pitcher,10/31/1989,"180cm, 86kg",N/A,70,12
+86,7,Corbin Carroll,ARI,Outfielder,08/21/2000,"178cm, 75kg",N/A,79,71
+87,12,Lourdes Gurriel Jr.,ARI,Outfielder,10/10/1993,"191cm, 98kg",N/A,84,39
+88,68,Jalen Beeks,ARI,Pitcher,07/10/1993,"180cm, 98kg",N/A,94,94
+89,23,Zac Gallen,ARI,Pitcher,08/03/1995,"188cm, 86kg",N/A,68,0
+90,26,Emmanuel Rivera,BAL,Third Base,06/29/1996,"183cm, 102kg",N/A,61,68
+91,98,Maverick Handley,BAL,Catcher,03/10/1998,"175cm, 95kg",N/A,100,14
+92,19,Tomoyuki Sugano,BAL,Pitcher,10/11/1989,"185cm, 90kg",N/A,60,4
+93,58,Cionel Pérez,BAL,Pitcher,04/21/1996,"183cm, 79kg",N/A,57,21
+94,29,Ramón Urías,BAL,Third Base,06/03/1994,"175cm, 84kg",N/A,57,94
+95,75,Carlos Narváez,BOS,Catcher,11/26/1998,"183cm, 86kg",N/A,99,17
+96,57,Greg Weissert,BOS,Pitcher,02/04/1995,"188cm, 107kg",N/A,97,60
+97,99,Luis Guerrero,BOS,Pitcher,08/05/2000,"183cm, 98kg",N/A,84,45
+98,22,Garrett Whitlock,BOS,Pitcher,06/11/1996,"196cm, 101kg",N/A,66,90
+99,35,Garrett Crochet,BOS,Pitcher,06/21/1999,"198cm, 111kg",N/A,73,23
+100,15,Carson Kelly,CHC,Catcher,07/14/1994,"185cm, 96kg",N/A,61,72
+101,16,Matthew Boyd,CHC,Pitcher,02/02/1991,"191cm, 101kg",N/A,85,94
+102,4,Pete Crow-Armstrong,CHC,Outfielder,03/25/2002,"183cm, 84kg",N/A,59,30
+103,29,Michael Busch,CHC,First Base,11/09/1997,"183cm, 95kg",N/A,63,67
+104,66,Julian Merryweather,CHC,Pitcher,10/14/1991,"193cm, 98kg",N/A,57,4
+105,31,Brent Suter,CIN,Pitcher,08/29/1989,"193cm, 97kg",N/A,67,29
+106,12,Austin Hays,CIN,Outfielder,07/05/1995,"180cm, 91kg",N/A,54,59
+107,59,Blake Dunn,CIN,Outfielder,09/05/1998,"178cm, 95kg",N/A,59,95
+108,64,Tony Santillan,CIN,Pitcher,04/15/1997,"191cm, 129kg",N/A,99,43
+109,32,Tyler Callihan,CIN,Second Base,06/22/2000,"180cm, 93kg",N/A,52,62
+110,33,Hunter Gaddis,CLE,Pitcher,04/09/1998,"198cm, 118kg",N/A,76,72
+111,22,Nolan Jones,CLE,Outfielder,05/07/1998,"196cm, 89kg",N/A,96,97
+112,41,Carlos Santana,CLE,First Base,04/08/1986,"178cm, 95kg",N/A,79,97
+113,4,Brayan Rocchio,CLE,Shortstop,01/13/2001,"175cm, 77kg",N/A,84,92
+114,7,Will Wilson,CLE,Shortstop,07/21/1998,"178cm, 84kg",N/A,90,55
+115,4,Michael Toglia,COL,First Base,08/16/1998,"196cm, 103kg",N/A,86,53
+116,31,Alan Trejo,COL,Second Base,05/30/1996,"183cm, 93kg",N/A,84,79
+117,27,Jordan Beck,COL,Outfielder,04/19/2001,"188cm, 102kg",N/A,92,14
+118,40,Tyler Kinley,COL,Pitcher,01/31/1991,"193cm, 100kg",N/A,86,96
+119,1,Adael Amador,COL,Second Base,04/11/2003,"180cm, 91kg",N/A,63,32
+120,18,Kenta Maeda,DET,Pitcher,04/11/1988,"185cm, 84kg",N/A,90,43
+121,33,Colt Keith,DET,Second Base,08/14/2001,"188cm, 96kg",N/A,57,99
+122,45,Reese Olson,DET,Pitcher,07/31/1999,"185cm, 73kg",N/A,100,13
+123,44,Justyn-Henry Malloy,DET,Outfielder,02/19/2000,"185cm, 96kg",N/A,75,83
+124,29,Tarik Skubal,DET,Pitcher,11/20/1996,"191cm, 109kg",N/A,52,96
+125,14,Mauricio Dubón,HOU,Second Base,07/19/1994,"183cm, 79kg",N/A,78,28
+126,58,Hunter Brown,HOU,Pitcher,08/29/1998,"188cm, 100kg",N/A,85,0
+127,9,Zach Dezenzo,HOU,Outfielder,05/11/2000,"196cm, 100kg",N/A,54,54
+128,67,Ryan Gusto,HOU,Pitcher,03/11/1999,"193cm, 105kg",N/A,64,45
+129,64,Logan VanWey,HOU,Pitcher,02/14/1999,"188cm, 93kg",N/A,60,17
+130,53,Carlos Estévez,KC,Pitcher,12/28/1992,"198cm, 126kg",N/A,56,76
+131,34,Freddy Fermin,KC,Catcher,05/16/1995,"178cm, 91kg",N/A,86,69
+132,61,Angel Zerpa,KC,Pitcher,09/27/1999,"183cm, 100kg",N/A,91,62
+133,6,Jonathan India,KC,Third Base,12/15/1996,"180cm, 91kg",N/A,61,53
+134,50,Kris Bubic,KC,Pitcher,08/19/1997,"191cm, 102kg",N/A,53,49
+135,51,Alex Vesia,LAD,Pitcher,04/11/1996,"185cm, 95kg",N/A,89,28
+136,78,Ben Casparius,LAD,Pitcher,02/11/1999,"188cm, 98kg",N/A,78,80
+137,3,Chris Taylor,LAD,Outfielder,08/29/1990,"183cm, 89kg",N/A,62,15
+138,25,Tommy Edman,LAD,Second Base,05/09/1995,"175cm, 88kg",N/A,72,0
+139,23,Michael Conforto,LAD,Outfielder,03/01/1993,"180cm, 98kg",N/A,71,68
+140,26,Nasim Nuñez,WSH,Shortstop,08/18/2000,"173cm, 75kg",N/A,97,70
+141,17,Alex Call,WSH,Outfielder,09/27/1994,"180cm, 86kg",N/A,80,4
+142,29,James Wood,WSH,Outfielder,09/17/2002,"201cm, 106kg",N/A,72,83
+143,19,Josh Bell,WSH,First Base,08/14/1992,"191cm, 118kg",N/A,76,63
+144,33,Nathaniel Lowe,WSH,First Base,07/07/1995,"193cm, 100kg",N/A,65,38
+145,12,Francisco Lindor,NYM,Shortstop,11/14/1993,"178cm, 86kg",N/A,66,40
+146,27,Mark Vientos,NYM,Third Base,12/11/1999,"191cm, 84kg",N/A,64,56
+147,3,Jesse Winker,NYM,Outfielder,08/17/1993,"188cm, 93kg",N/A,64,13
+148,20,Pete Alonso,NYM,First Base,12/07/1994,"191cm, 111kg",N/A,73,5
+149,15,Tyrone Taylor,NYM,Outfielder,01/22/1994,"185cm, 99kg",N/A,53,84

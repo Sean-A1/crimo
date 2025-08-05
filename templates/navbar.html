@@ -1,0 +1,89 @@
+<!-- 네비게이션바 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container-fluid">
+
+        <!-- 왼쪽 로고/사이트명 -->
+        <a class="navbar-brand" href="{% url 'home1' %}">CRIMO</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 네비게이션 바 항목들 -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- 왼쪽 메뉴 -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                {% if league %}
+                    <a class="nav-link" href="{% url 'prediction:prediction' league %}">예측</a>
+                    <a class="nav-link" href="{% url 'leaderboards:leaderboard' league %}">랭킹</a>
+                    <a class="nav-link" href="{% url 'team:team_list' league %}">팀/선수</a>
+                    <a class="nav-link" href="{% url 'match:schedule_list' league %}">경기</a>
+                    
+                {% else %}
+                    <!-- 리그 선택 전이므로 링크 비활성 -->
+                    <a class="nav-link disabled" href="#">예측</a>
+                    <a class="nav-link disabled" href="#">랭킹</a>
+                    <a class="nav-link disabled" href="#">팀/선수</a>
+                    <a class="nav-link disabled" href="#">경기</a>
+                    
+                    
+                {% endif %}
+
+
+                <!-- 게시판-->
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pybo:index' %}">게시판</a>
+                </li>
+                -->
+                
+            </ul>
+
+
+            <!-- 오른쪽 메뉴 -->
+            <ul class="navbar-nav">
+
+                <!-- 현재 리그 상태 표시 -->
+                {% if request.session.league and request.resolver_match.url_name != "home1" %}
+                    <span class="navbar-text ms-3">
+                        현재 선택된 리그: <strong>{{ request.session.league|upper }}</strong>
+                    </span>
+                {% endif %}
+                
+                <!-- 로그인,회원가입 or 로그아웃 -->
+                <!--
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:profile' %}">
+                        {{ user.username }} 마이페이지
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:logout' %}">
+                        로그아웃
+                    </a>
+                </li>
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:login' %}">login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
+                </li>
+                {% endif %}
+                -->
+                
+            </ul>
+            
+        </div>
+    </div>
+</nav>

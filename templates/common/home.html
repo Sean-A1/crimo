@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 화면 전체 폭 (container-fluid)로 설정 + 구분선(border-bottom) -->
+<div class="container-fluid border-bottom px-0" style="margin-top:0;">
+    <div class="row g-0">
+
+        <!-- 날짜 영역: 가운데 정렬 (세로/가로) -->
+        <div class="col-auto d-flex align-items-center justify-content-center bg-light border-end px-4 py-3">
+            <!-- 날짜 텍스트 -->
+            <h5 class="mb-0">{{ display_date }}</h5>
+        </div>
+
+        <!-- 경기 일정 영역: 왼쪽 정렬 -->
+        <div class="col py-3">
+            <!-- 왼쪽 정렬 + 경기 카드 간격 -->
+            <div class="d-flex align-items-center justify-content-start">
+            
+                {% for schedule in schedules %}
+                <div class="border rounded-3 shadow-sm px-3 py-2 me-3">
+
+                    <small class="badge bg-light text-dark mb-1">{{ schedule.time }}</small>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="{% static 'images/teams/'|add:schedule.team1|add:'.png' %}" style="width:20px;">
+                        <span class="ms-1 fw-bold">{{ schedule.team1 }}</span>
+                        {% if schedule.score_team1 %}
+                            <span class="ms-2">{{ schedule.score_team1 }}</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="{% static 'images/teams/'|add:schedule.team2|add:'.png' %}" style="width:20px;">
+                        <span class="ms-1 fw-bold">{{ schedule.team2 }}</span>
+                        {% if schedule.score_team2 %}
+                            <span class="ms-2">{{ schedule.score_team2 }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+        {% empty %}
+            <p>경기 일정 없음</p>
+        {% endfor %}
+
+            </div>
+        </div> <!-- col 끝 -->
+    </div> <!-- row 끝 -->
+
+
+    <div class="container my-4">
+
+      <div class="row">
+          <!-- 메인 경기 예측 (왼쪽) -->
+          <div class="col-md-8">
+              <div class="card">
+                  <!-- 대결 구도 이미지를 크게 삽입 -->
+                  <img src="{% static 'images/home/main.png' %}" 
+                    class="card-img-top mx-auto d-block"
+                    style="width:100%;"
+                    alt="메인 경기 이미지">
+  
+                  <!-- 메인 경기 예측 텍스트 -->
+                  <div class="card-body">
+                    <h5 class="card-title text-center mb-3">메인 경기 예측</h5>
+                    <table class="table table-borderless text-center">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th>날짜</th>
+                                <th>시간</th>
+                                <th>구장</th>
+                                <th colspan="3">매치업</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3/11</td>
+                                <td>18:30</td>
+                                <td>광주</td>
+                                <td>
+                                    <img src="{% static 'images/teams/KIA.png' %}" style="width:30px;">
+                                    <span class="ms-1">KIA</span>
+                                </td>
+                                <td>vs</td>
+                                <td>
+                                    <img src="{% static 'images/teams/삼성.png' %}" style="width:30px;">
+                                    <span class="ms-1">삼성</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">AI 예측</td>
+                                <td colspan="3">
+                                    <span class="text-success fw-bold me-2">win (55)</span> : 
+                                    <span class="text-danger fw-bold ms-2">lose (45)</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- 뉴스 섹션 (오른쪽) -->
+          <div class="col-md-4">
+              <div class="card">
+                  <div class="card-header">
+                      <strong>Latest News</strong>
+                  </div>
+                  <div class="card-body p-0">
+                      <!-- 임시 뉴스 리스트 -->
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              KBO “해외 구단 스프링캠프지 파견 계획” 안내
+                          </li>
+                          <li class="list-group-item">
+                              "올 베스트를 위한 새로운 시작" KBO, 야구 발전을
+                          </li>
+                          <li class="list-group-item">
+                              2025 KBO 리그 라이선스 공고
+                          </li>
+                          <li class="list-group-item">
+                              KBO, 페넌트레이스 일정 명단 발표
+                          </li>
+                          <li class="list-group-item">
+                              더보기...
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  </div>
+
+</div> <!-- container-fluid 끝 -->
+{% endblock %}

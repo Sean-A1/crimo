@@ -1,0 +1,15 @@
+# 루트 지정
+root = true
+
+# 모든 파일에 대해 기본 설정
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Markdown 파일은 공백 트림 금지
+[*.md]
+trim_trailing_whitespace = false

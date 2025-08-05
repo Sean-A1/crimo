@@ -1,0 +1,48 @@
+<!-- common/profile.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+  <h2>마이페이지</h2>
+  <hr>
+  <div class="card my-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.username }}</h5>
+      <p class="card-text">
+        이메일: {{ user.email }}<br>
+        가입일: {{ user.date_joined|date:"Y-m-d H:i" }}
+      </p>
+      <!-- 비밀번호 변경(준비중) -->
+      <a href="#" class="btn btn-secondary disabled">비밀번호 변경</a>
+    </div>
+  </div>
+
+  <!-- 작성한 질문 -->
+  <h5>내가 작성한 질문</h5>
+  <ul>
+    {% for question in question_list %}
+    <li>
+      <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+      <small>({{ question.create_date|date:"Y-m-d H:i" }})</small>
+    </li>
+    {% empty %}
+    <li>작성한 질문이 없습니다.</li>
+    {% endfor %}
+  </ul>
+  <hr>
+
+  <!-- 작성한 답변 -->
+  <h5>내가 작성한 답변</h5>
+  <ul>
+    {% for answer in answer_list %}
+    <li>
+      <a href="{% url 'pybo:detail' answer.question.id %}#answer_{{ answer.id }}">
+        {{ answer.content|truncatechars:40 }}
+      </a>
+      <small>({{ answer.create_date|date:"Y-m-d H:i" }})</small>
+    </li>
+    {% empty %}
+    <li>작성한 답변이 없습니다.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

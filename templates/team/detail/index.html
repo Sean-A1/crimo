@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static_league %}
+
+{% block content %}
+<div class="container my-4">
+
+    <!-- 팀 로고 및 이름 -->
+    <div class="text-center mb-4">
+        <img src="{% static 'images/teams/' %}{{ team.league }}/{{ team.team_id }}.png" style="width: 80px;">
+        <h3 class="mt-2">{{ team.team_id }}</h3>
+    </div>
+
+    <!-- 선수 목록 테이블 -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-striped text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>등번호</th>
+                        <th>이름</th>
+                        <th>포지션</th>
+                        <th>생년월일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                    <tr>
+                        <td>{{ player.backnumber }}</td>
+                        <td>{{ player.player_id }}</td>
+                        <td>{{ player.position }}</td>
+                        <td>{{ player.birthday }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">선수 정보가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
