@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    container_name: django-web
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py import_players &&
+             python manage.py import_schedules &&
+             gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 4"
+    volumes:
+      - static_volume:/app/staticfiles
+      - dbdata:/app/db
+      - logs:/app/logs
+    expose:
+      - "8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - DB_ENGINE=sqlite  # ← sqlite 또는 postgresql
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/staticfiles
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    restart: always
+
+  # PostgreSQL 확장 옵션
+  # db:
+  #   image: postgres:15
+  #   container_name: postgres-db
+  #   environment:
+  #     - POSTGRES_USER=${DB_USER}
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
+  #     - POSTGRES_DB=${DB_NAME}
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   restart: always
+
+volumes:
+  static_volume:
+  dbdata:
+  logs:
+  # pgdata:

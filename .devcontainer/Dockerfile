@@ -1,7 +1,11 @@
+# local dockerfile
+
 FROM python:3.12
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+# Django 환경 설정
+ENV DJANGO_SETTINGS_MODULE=config.settings.local 
 
 WORKDIR /app
 
@@ -22,7 +26,7 @@ COPY . .
 # logs 디렉토리 생성
 RUN mkdir -p logs
 
-# Django 환경 설정
-ENV DJANGO_SETTINGS_MODULE=config.settings.local
+
+
 
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
