@@ -1,4 +1,4 @@
-import environ
+# import environ
 from .base import *
 import os
 
@@ -28,6 +28,8 @@ if DB_ENGINE == "sqlite":
         }
     }
 
+
+"""
 elif DB_ENGINE == "postgresql":
     env = environ.Env()
     environ.Env.read_env(BASE_DIR / ".env")
@@ -42,3 +44,4 @@ elif DB_ENGINE == "postgresql":
             "PORT": "5432",
         }
     }
+"""
