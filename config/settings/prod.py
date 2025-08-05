@@ -11,11 +11,12 @@ SITE_TITLE = "CRIMO"
 
 """
 STATIC_ROOT = BASE_DIR / 'pybo/static/'
-STATICFILES_DIRS = []
 """
+STATICFILES_DIRS = []
+
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static/"
 
 
 DB_ENGINE = "sqlite"
