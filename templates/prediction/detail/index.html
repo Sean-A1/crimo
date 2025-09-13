@@ -27,19 +27,40 @@
         🔹 승률 예측: {{ schedule.team1 }}({{ schedule.win_prob_team1 }}%) vs {{ schedule.team2 }}({{ schedule.win_prob_team2 }}%)<br>
     </div>
 
-    {# templates/prediction/detail/index.html 일부 #}
-    <div class="card border-info mb-3">
-    <div class="card-header bg-info text-dark fw-bold">분류 성능지표</div>
-    <div class="card-body">
-        <p class="mb-2 text-muted">
-        최신 예측에 사용한 데이터와 유효성/테스트 성능(혼동행렬, 리포트)을 확인할 수 있습니다.
-        </p>
-        <a class="btn btn-outline-info"
-        href="{% url 'prediction:class_metrics' league date_str away|upper home|upper %}">
-        사용 데이터, 혼동행렬, 성능지표 보기 →
-        </a>
+    <div class="row g-3 mb-3">
+        <!-- 분류 성능지표 -->
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 border-info">
+            <div class="card-header bg-info text-dark fw-bold">분류 성능지표</div>
+            <div class="card-body">
+                <p class="mb-2 text-muted">
+                최신 예측에 사용한 데이터와 유효성/테스트 성능(혼동행렬, 리포트)을 확인할 수 있습니다.
+                </p>
+                <a class="btn btn-outline-info"
+                href="{% url 'prediction:class_metrics' league date_str away|upper home|upper %}">
+                사용 데이터, 혼동행렬, 성능지표 보기 →
+                </a>
+            </div>
+            </div>
+        </div>
+
+        <!-- 회귀 상세지표 -->
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 border-info">
+            <div class="card-header bg-info text-dark fw-bold">회귀 상세지표</div>
+            <div class="card-body">
+                <p class="mb-3 text-muted small">
+                선발투수(실제/예측), 투수 교체 로그, 게임 PK 등 세부 로그를 확인합니다.
+                </p>
+                <a class="btn btn-outline-info"
+                href="{% url 'prediction:reg_metrics' league date_str away|upper home|upper %}">
+                사용 데이터 / 상세 로그 보기 →
+                </a>
+            </div>
+            </div>
+        </div>
     </div>
-    </div>
+
 
 
     <!-- 그래프 섹션 -->
@@ -71,88 +92,144 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const inning_labels = ['1회', '2회', '3회', '4회', '5회', '6회', '7회', '8회', '9회'];
-    const scenario_team1 = {{ scenario_team1|safe }};
-    const scenario_team2 = {{ scenario_team2|safe }};
+  const inning_labels = ['1회','2회','3회','4회','5회','6회','7회','8회','9회'];
 
-    // ✔ 총 득점 누적 데이터 생성
-    const cumulativeTeam1 = scenario_team1.reduce((acc, cur, idx) => {
-        acc.push((acc[idx - 1] || 0) + cur);
-        return acc;
-    }, []);
+  // Django 컨텍스트에서 가져오기
+  const predAway = {{ scenario_team1|safe }};   // away 예측
+  const predHome = {{ scenario_team2|safe }};   // home 예측
+  const actAway  = {{ actual_team1|safe }};     // away 실제 (없으면 [])
+  const actHome  = {{ actual_team2|safe }};     // home 실제 (없으면 [])
 
-    const cumulativeTeam2 = scenario_team2.reduce((acc, cur, idx) => {
-        acc.push((acc[idx - 1] || 0) + cur);
-        return acc;
-    }, []);
+  // 누적 생성(없는 데이터면 빈 배열로 반환)
+  function cumulative(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) return [];
+    const out = [];
+    arr.reduce((acc, cur, idx) => {
+      const v = (acc + (Number(cur) || 0));
+      out.push(v);
+      return v;
+    }, 0);
+    return out;
+  }
 
-    // ✔ 득점 시나리오 차트 (정수만)
-    const scoreCtx = document.getElementById('scoreChart').getContext('2d');
-    new Chart(scoreCtx, {
-        type: 'line',
-        data: {
-            labels: inning_labels,
-            datasets: [
-                {
-                    label: '{{ schedule.team1 }} 득점 시나리오',
-                    data: scenario_team1,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 2,
-                },
-                {
-                    label: '{{ schedule.team2 }} 득점 시나리오',
-                    data: scenario_team2,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2,
-                }
-            ]
+  const cumPredAway = cumulative(predAway);
+  const cumPredHome = cumulative(predHome);
+  const cumActAway  = cumulative(actAway);
+  const cumActHome  = cumulative(actHome);
+
+  // 실제 데이터가 없으면 라인 숨김
+  const hideActAway = (actAway.length === 0);
+  const hideActHome = (actHome.length === 0);
+  const hideCumActAway = (cumActAway.length === 0);
+  const hideCumActHome = (cumActHome.length === 0);
+
+  // ✔ 득점 시나리오(이닝별) — 4개 선
+  const scoreCtx = document.getElementById('scoreChart').getContext('2d');
+  new Chart(scoreCtx, {
+    type: 'line',
+    data: {
+      labels: inning_labels,
+      datasets: [
+        {
+          label: '{{ away }} (예측)',
+          data: predAway,
+          borderWidth: 2,
+          backgroundColor: 'rgba(255, 99, 132, 0.15)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          pointRadius: 2,
         },
-        options: {
-            responsive: true,
-            scales: {
-                y: { 
-                    beginAtZero: true,
-                    ticks: { stepSize: 1 }  // ✅ 정수만 표시
-                }
-            }
-        }
-    });
-
-    // ✔ 총 득점 시나리오 차트
-    const cumulativeCtx = document.getElementById('cumulativeChart').getContext('2d');
-    new Chart(cumulativeCtx, {
-        type: 'line',
-        data: {
-            labels: inning_labels,
-            datasets: [
-                {
-                    label: '{{ schedule.team1 }} 총 득점',
-                    data: cumulativeTeam1,
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 2,
-                },
-                {
-                    label: '{{ schedule.team2 }} 총 득점',
-                    data: cumulativeTeam2,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                }
-            ]
+        {
+          label: '{{ home }} (예측)',
+          data: predHome,
+          borderWidth: 2,
+          backgroundColor: 'rgba(54, 162, 235, 0.15)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          pointRadius: 2,
         },
-        options: {
-            responsive: true,
-            scales: {
-                y: { 
-                    beginAtZero: true,
-                    ticks: { stepSize: 1 }  // ✅ 정수만 표시
-                }
-            }
-        }
-    });
+        {
+          label: '{{ away }} (실제)',
+          data: actAway,
+          borderWidth: 2,
+          borderDash: [6,4],
+          backgroundColor: 'rgba(255, 99, 132, 0.05)',
+          borderColor: 'rgba(255, 99, 132, 0.7)',
+          pointRadius: 2,
+          hidden: hideActAway,
+        },
+        {
+          label: '{{ home }} (실제)',
+          data: actHome,
+          borderWidth: 2,
+          borderDash: [6,4],
+          backgroundColor: 'rgba(54, 162, 235, 0.05)',
+          borderColor: 'rgba(54, 162, 235, 0.7)',
+          pointRadius: 2,
+          hidden: hideActHome,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'nearest', intersect: false },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+      }
+    }
+  });
+
+  // ✔ 총 득점(누적) — 4개 선
+  const cumulativeCtx = document.getElementById('cumulativeChart').getContext('2d');
+  new Chart(cumulativeCtx, {
+    type: 'line',
+    data: {
+      labels: inning_labels,
+      datasets: [
+        {
+          label: '{{ away }} 총 득점 (예측)',
+          data: cumPredAway,
+          borderWidth: 2,
+          backgroundColor: 'rgba(255, 206, 86, 0.15)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          pointRadius: 2,
+        },
+        {
+          label: '{{ home }} 총 득점 (예측)',
+          data: cumPredHome,
+          borderWidth: 2,
+          backgroundColor: 'rgba(75, 192, 192, 0.15)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          pointRadius: 2,
+        },
+        {
+          label: '{{ away }} 총 득점 (실제)',
+          data: cumActAway,
+          borderWidth: 2,
+          borderDash: [6,4],
+          backgroundColor: 'rgba(255, 206, 86, 0.05)',
+          borderColor: 'rgba(255, 206, 86, 0.7)',
+          pointRadius: 2,
+          hidden: hideCumActAway,
+        },
+        {
+          label: '{{ home }} 총 득점 (실제)',
+          data: cumActHome,
+          borderWidth: 2,
+          borderDash: [6,4],
+          backgroundColor: 'rgba(75, 192, 192, 0.05)',
+          borderColor: 'rgba(75, 192, 192, 0.7)',
+          pointRadius: 2,
+          hidden: hideCumActHome,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'nearest', intersect: false },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+      }
+    }
+  });
 </script>
 
 {% endblock %}

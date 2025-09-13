@@ -70,14 +70,23 @@ def pred_detail(request, league=None, date_str=None, away=None, home=None):
         away_norm=(away or "").upper(),
         home_norm=(home or "").upper(),
     )
-    a, h = obj.pred_lists()
+
+    # 예측 이닝
+    pred_away, pred_home = obj.pred_lists()
+
+    # 실제 이닝 (없으면 빈 배열)
+    act_away = obj._split_nums(obj.act_inn_away or "")
+    act_home = obj._split_nums(obj.act_inn_home or "")
+
     ctx = {
         "league": (league or "mlb").lower(),
         "date_str": date_str,
         "away": obj.away_norm,
         "home": obj.home_norm,
-        "scenario_team1": a,  # away
-        "scenario_team2": h,  # home
+        "scenario_team1": pred_away,   # away (예측)
+        "scenario_team2": pred_home,   # home (예측)
+        "actual_team1": act_away,      # away (실제)
+        "actual_team2": act_home,      # home (실제)
         "date": obj.date,
     }
     return render(request, "prediction/detail/index.html", ctx)
@@ -140,3 +149,33 @@ def class_metrics_image(request, league, date_str, away, home, which):
         raise Http404("이미지 파일을 찾을 수 없습니다.")
 
     return FileResponse(open(path, "rb"), content_type="image/png")
+
+def reg_metrics(request, league, date_str, away, home):
+    obj = get_object_or_404(
+        MlbPredReg,
+        date_str=date_str,
+        away_norm=away.upper(),
+        home_norm=home.upper(),
+    )
+
+    # 투수교체 리스트: " | " 기준 분리
+    changes_list = []
+    if obj.pitching_changes:
+        # 안전하게 파이프 기준으로 split
+        changes_list = [seg.strip() for seg in obj.pitching_changes.split("|") if seg.strip()]
+
+    ctx = {
+        "league": league,
+        "date_str": date_str,
+        "away": obj.away_norm,
+        "home": obj.home_norm,
+        "actual_starters": obj.actual_starters or "정보 없음",
+        "predicted_starters": obj.predicted_starters or "정보 없음",
+        "pitching_changes_list": changes_list,  # 리스트 렌더
+        "game_pk": obj.game_pk,
+        "date": obj.date,
+        # 점수 합계가 있으면 같이 보여주면 좋음
+        "pred_total": (obj.pred_total_away, obj.pred_total_home),
+        "act_total": (obj.act_total_away, obj.act_total_home),
+    }
+    return render(request, "prediction/detail/reg_metrics.html", ctx)

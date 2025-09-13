@@ -74,10 +74,10 @@ class MlbPredReg(models.Model):
     act_total_away = models.IntegerField(null=True, blank=True)
     
     # 상세 필드
-    actual_starters = models.TextField(null=True, blank=True)
-    predicted_starters = models.TextField(null=True, blank=True)
-    pitching_changes = models.TextField(null=True, blank=True)
-    game_pk = models.BigIntegerField(null=True, blank=True, db_index=True)
+    actual_starters    = models.CharField(max_length=200, null=True, blank=True)
+    predicted_starters = models.CharField(max_length=200, null=True, blank=True)
+    pitching_changes   = models.TextField(null=True, blank=True)
+    game_pk            = models.CharField(max_length=20, null=True, blank=True)
 
     class Meta:
         unique_together = ("date_str", "away_norm", "home_norm")

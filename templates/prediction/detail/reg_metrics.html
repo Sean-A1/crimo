@@ -1,0 +1,99 @@
+{# templates/prediction/detail/reg_metrics.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">{{ away }} @ {{ home }} — 회귀 상세지표 ({{ date_str }})</h4>
+    <div class="d-flex gap-2">
+      <a class="btn btn-sm btn-secondary"
+         href="{% url 'prediction:pred_detail' league date_str away|upper home|upper %}">
+         ← 경기 상세(회귀 차트)
+      </a>
+      <a class="btn btn-sm btn-outline-secondary"
+         href="{% url 'prediction:prediction' league %}">
+         전체 목록
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">선발투수 (실제)</div>
+        <div class="card-body">
+          <pre class="mb-0" style="white-space:pre-wrap">{{ actual_starters }}</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">선발투수 (예측)</div>
+        <div class="card-body">
+          <pre class="mb-0" style="white-space:pre-wrap">{{ predicted_starters }}</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-light fw-bold">투수 교체 로그</div>
+        <div class="card-body">
+          {% if pitching_changes_list %}
+            <ul class="mb-0">
+              {% for line in pitching_changes_list %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted mb-0">투수 교체 로그가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card">
+        <div class="card-header bg-light fw-bold">합계(예측)</div>
+        <div class="card-body">
+          {% if pred_total.0 or pred_total.1 %}
+            <p class="mb-0"><strong>AWAY</strong>: {{ pred_total.0|default:"-" }} 점</p>
+            <p class="mb-0"><strong>HOME</strong>: {{ pred_total.1|default:"-" }} 점</p>
+          {% else %}
+            <p class="text-muted mb-0">예측 합계가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card">
+        <div class="card-header bg-light fw-bold">합계(실제)</div>
+        <div class="card-body">
+          {% if act_total.0 or act_total.1 %}
+            <p class="mb-0"><strong>AWAY</strong>: {{ act_total.0|default:"-" }} 점</p>
+            <p class="mb-0"><strong>HOME</strong>: {{ act_total.1|default:"-" }} 점</p>
+          {% else %}
+            <p class="text-muted mb-0">실제 합계가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-light fw-bold">게임 PK</div>
+        <div class="card-body">
+          {% if game_pk %}
+            <p class="mb-0">{{ game_pk }}</p>
+          {% else %}
+            <p class="text-muted mb-0">게임 PK 정보가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

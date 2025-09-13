@@ -111,7 +111,7 @@ class Command(BaseCommand):
         ws = wb.active  # 첫 시트
 
         # 헤더 매핑
-        header = [c.value for c in next(ws.iter_rows(min_row=1, max_row=1))]
+        header = [str(c.value).strip() if c.value is not None else "" for c in next(ws.iter_rows(min_row=1, max_row=1))]
         name_to_idx = {str(name).strip(): idx for idx, name in enumerate(header)}
 
         required = [
@@ -121,12 +121,21 @@ class Command(BaseCommand):
             "predicted_inning_scores",
             "actual_total",
             "predicted_total",
+            
+            "actual_starters", "predicted_starters",
+            "pitching_changes", "game_pk",
         ]
         for r in required:
             if r not in name_to_idx:
                 self.stderr.write(f"❌ 헤더에 '{r}' 컬럼이 없습니다. (headers={header})")
                 return
 
+        # 새 필드(없어도 통과)
+        col_actual_starters = name_to_idx.get("actual_starters")
+        col_pred_starters = name_to_idx.get("predicted_starters")
+        col_pitching_changes = name_to_idx.get("pitching_changes")
+        col_game_pk = name_to_idx.get("game_pk")
+        
         seen_dates = set()
         latest = {}
         rows_read = 0
@@ -140,6 +149,12 @@ class Command(BaseCommand):
             pred_inn_cell = row[name_to_idx["predicted_inning_scores"]].value
             act_tot_cell = row[name_to_idx["actual_total"]].value
             pred_tot_cell = row[name_to_idx["predicted_total"]].value
+            
+            # 새 컬럼 안전 접근
+            act_starters = (row[col_actual_starters].value if col_actual_starters is not None else None)
+            pred_starters = (row[col_pred_starters].value if col_pred_starters is not None else None)
+            pitching_changes = (row[col_pitching_changes].value if col_pitching_changes is not None else None)
+            game_pk_val = (row[col_game_pk].value if col_game_pk is not None else None)
 
             dt, yymmdd = self.parse_date(date_cell)
             if not dt:
@@ -164,6 +179,21 @@ class Command(BaseCommand):
             pred_away_total = pred_totals.get(away_norm)
             act_home_total = act_totals.get(home_norm) if act_totals else None
             act_away_total = act_totals.get(away_norm) if act_totals else None
+            
+            # 새 컬럼 안전 접근
+            act_starters_cell  = row[col_actual_starters].value if col_actual_starters is not None else None
+            pred_starters_cell = row[col_pred_starters].value  if col_pred_starters  is not None else None
+            changes_cell       = row[col_pitching_changes].value if col_pitching_changes is not None else None
+            game_pk_cell       = row[col_game_pk].value if col_game_pk is not None else None
+
+            # ✅ game_pk 안전 변환 (정수/실수/문자열 모두 수용)
+            game_pk = None
+            if game_pk_cell is not None:
+                try:
+                    game_pk = str(int(float(game_pk_cell)))   # 숫자면 정수화
+                except Exception:
+                    v = str(game_pk_cell).strip()
+                    game_pk = v or None
 
             # 세미콜론 형태로 저장
             rec = {
@@ -181,6 +211,12 @@ class Command(BaseCommand):
                 "pred_total_away": int(pred_away_total) if pred_away_total is not None else None,
                 "act_total_home": int(act_home_total) if act_home_total is not None else None,
                 "act_total_away": int(act_away_total) if act_away_total is not None else None,
+                
+                # 저장
+                "actual_starters":    str(act_starters_cell).strip()  if act_starters_cell  else None,
+                "predicted_starters": str(pred_starters_cell).strip() if pred_starters_cell else None,
+                "pitching_changes":   str(changes_cell).strip()       if changes_cell       else None,
+                "game_pk":            game_pk,   # ✅ 여기서 이제 정의되어 있음
             }
 
             key = (yymmdd, away_norm, home_norm)
