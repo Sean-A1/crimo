@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250614, match_id=TOR@PHI
+n_valid=337
+
+== Sigmoid ==
+Best Threshold: 0.380 (F1=0.8989)
+Accuracy: 0.8932
+Precision: 0.8939
+Recall: 0.9040
+F1: 0.8989
+Brier: 0.07769
+AUC: 0.9582
+Confusion Matrix: [[141, 19], [17, 160]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.89      0.88      0.89       160
+           1       0.89      0.90      0.90       177
+
+    accuracy                           0.89       337
+   macro avg       0.89      0.89      0.89       337
+weighted avg       0.89      0.89      0.89       337
+
+------------------------------------------------------------

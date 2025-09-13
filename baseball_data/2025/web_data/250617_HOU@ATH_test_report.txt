@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250617, match_id=HOU@ATH
+n_test=335
+
+== Sigmoid == (thr from valid = 0.550)
+Accuracy: 0.8806
+Precision: 0.9484
+Recall: 0.8212
+F1: 0.8802
+Brier: 0.09201
+AUC: 0.9438
+Confusion Matrix: [[148, 8], [32, 147]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.82      0.95      0.88       156
+           1       0.95      0.82      0.88       179
+
+    accuracy                           0.88       335
+   macro avg       0.89      0.88      0.88       335
+weighted avg       0.89      0.88      0.88       335
+
+------------------------------------------------------------

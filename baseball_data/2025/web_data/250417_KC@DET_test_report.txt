@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250417, match_id=KC@DET
+n_test=254
+
+== Sigmoid == (thr from valid = 0.370)
+Accuracy: 0.9331
+Precision: 0.9236
+Recall: 0.9568
+F1: 0.9399
+Brier: 0.05655
+AUC: 0.9757
+Confusion Matrix: [[104, 11], [6, 133]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.90      0.92       115
+           1       0.92      0.96      0.94       139
+
+    accuracy                           0.93       254
+   macro avg       0.93      0.93      0.93       254
+weighted avg       0.93      0.93      0.93       254
+
+------------------------------------------------------------

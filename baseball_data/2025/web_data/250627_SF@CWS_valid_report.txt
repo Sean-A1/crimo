@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250627, match_id=SF@CWS
+n_valid=341
+
+== Sigmoid ==
+Best Threshold: 0.650 (F1=0.9018)
+Accuracy: 0.9062
+Precision: 0.9800
+Recall: 0.8352
+F1: 0.9018
+Brier: 0.07896
+AUC: 0.9512
+Confusion Matrix: [[162, 3], [29, 147]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.85      0.98      0.91       165
+           1       0.98      0.84      0.90       176
+
+    accuracy                           0.91       341
+   macro avg       0.91      0.91      0.91       341
+weighted avg       0.92      0.91      0.91       341
+
+------------------------------------------------------------

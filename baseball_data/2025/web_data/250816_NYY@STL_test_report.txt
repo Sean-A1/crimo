@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250816, match_id=NYY@STL
+n_test=409
+
+== Sigmoid == (thr from valid = 0.600)
+Accuracy: 0.9193
+Precision: 0.9800
+Recall: 0.8711
+F1: 0.9224
+Brier: 0.06915
+AUC: 0.9584
+Confusion Matrix: [[180, 4], [29, 196]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.86      0.98      0.92       184
+           1       0.98      0.87      0.92       225
+
+    accuracy                           0.92       409
+   macro avg       0.92      0.92      0.92       409
+weighted avg       0.93      0.92      0.92       409
+
+------------------------------------------------------------

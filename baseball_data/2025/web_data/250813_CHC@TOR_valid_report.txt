@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250813, match_id=CHC@TOR
+n_valid=403
+
+== Sigmoid ==
+Best Threshold: 0.430 (F1=0.9216)
+Accuracy: 0.9206
+Precision: 0.9447
+Recall: 0.8995
+F1: 0.9216
+Brier: 0.06370
+AUC: 0.9674
+Confusion Matrix: [[183, 11], [21, 188]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.90      0.94      0.92       194
+           1       0.94      0.90      0.92       209
+
+    accuracy                           0.92       403
+   macro avg       0.92      0.92      0.92       403
+weighted avg       0.92      0.92      0.92       403
+
+------------------------------------------------------------

@@ -1,0 +1,12 @@
+{
+  "files.eol": "\n",  // LF 고정  
+  // black 포매터 설정
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "editor.formatOnSave": true,
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": []
+  }
+  

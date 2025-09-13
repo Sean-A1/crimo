@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250329, match_id=COL@TB
+n_test=229
+
+== Sigmoid == (thr from valid = 0.470)
+Accuracy: 0.8777
+Precision: 0.9224
+Recall: 0.8492
+F1: 0.8843
+Brier: 0.07476
+AUC: 0.9657
+Confusion Matrix: [[94, 9], [19, 107]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.83      0.91      0.87       103
+           1       0.92      0.85      0.88       126
+
+    accuracy                           0.88       229
+   macro avg       0.88      0.88      0.88       229
+weighted avg       0.88      0.88      0.88       229
+
+------------------------------------------------------------

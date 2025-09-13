@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250803, match_id=LAD@TB
+n_test=391
+
+== Sigmoid == (thr from valid = 0.360)
+Accuracy: 0.9105
+Precision: 0.9124
+Recall: 0.9252
+F1: 0.9188
+Brier: 0.05625
+AUC: 0.9746
+Confusion Matrix: [[158, 19], [16, 198]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.89      0.90       177
+           1       0.91      0.93      0.92       214
+
+    accuracy                           0.91       391
+   macro avg       0.91      0.91      0.91       391
+weighted avg       0.91      0.91      0.91       391
+
+------------------------------------------------------------

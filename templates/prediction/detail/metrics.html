@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static_league %}
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 class="mb-3">{{ away }} @ {{ home }} — 분류 성능지표 ({{ date_str }})</h4>
+    <a class="btn btn-sm btn-secondary"
+       href="{% url 'prediction:pred_detail' league date_str away|upper home|upper %}">
+       ← 경기 상세(회귀 차트)로
+    </a>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">VALID 성능 리포트</div>
+        <div class="card-body">
+          {% if valid_report %}
+            <pre class="mb-0" style="white-space:pre-wrap">{{ valid_report }}</pre>
+          {% else %}
+            <p class="text-muted">유효성 리포트가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">VALID 혼동행렬</div>
+        <div class="card-body text-center">
+          {% if valid_img_url %}
+            <img src="{{ valid_img_url }}" class="img-fluid" alt="valid confusion matrix">
+          {% else %}
+            <p class="text-muted">유효성 혼동행렬 이미지가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">TEST 성능 리포트</div>
+        <div class="card-body">
+          {% if test_report %}
+            <pre class="mb-0" style="white-space:pre-wrap">{{ test_report }}</pre>
+          {% else %}
+            <p class="text-muted">테스트 리포트가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <div class="card-header bg-light fw-bold">TEST 혼동행렬</div>
+        <div class="card-body text-center">
+          {% if test_img_url %}
+            <img src="{{ test_img_url }}" class="img-fluid" alt="test confusion matrix">
+          {% else %}
+            <p class="text-muted">테스트 혼동행렬 이미지가 없습니다.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

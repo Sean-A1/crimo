@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250504, match_id=SEA@TEX
+n_test=276
+
+== Sigmoid == (thr from valid = 0.480)
+Accuracy: 0.9022
+Precision: 0.9191
+Recall: 0.9244
+F1: 0.9217
+Brier: 0.06891
+AUC: 0.9620
+Confusion Matrix: [[90, 14], [13, 159]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.87      0.87       104
+           1       0.92      0.92      0.92       172
+
+    accuracy                           0.90       276
+   macro avg       0.90      0.89      0.90       276
+weighted avg       0.90      0.90      0.90       276
+
+------------------------------------------------------------

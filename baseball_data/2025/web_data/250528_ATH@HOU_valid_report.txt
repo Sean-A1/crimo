@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250528, match_id=ATH@HOU
+n_valid=305
+
+== Sigmoid ==
+Best Threshold: 0.600 (F1=0.9352)
+Accuracy: 0.9246
+Precision: 0.9822
+Recall: 0.8925
+F1: 0.9352
+Brier: 0.06555
+AUC: 0.9631
+Confusion Matrix: [[116, 3], [20, 166]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.85      0.97      0.91       119
+           1       0.98      0.89      0.94       186
+
+    accuracy                           0.92       305
+   macro avg       0.92      0.93      0.92       305
+weighted avg       0.93      0.92      0.93       305
+
+------------------------------------------------------------

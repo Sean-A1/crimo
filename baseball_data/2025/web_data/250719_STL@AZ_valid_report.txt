@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250719, match_id=STL@AZ
+n_valid=371
+
+== Sigmoid ==
+Best Threshold: 0.350 (F1=0.8788)
+Accuracy: 0.8706
+Precision: 0.8614
+Recall: 0.8969
+F1: 0.8788
+Brier: 0.08784
+AUC: 0.9473
+Confusion Matrix: [[149, 28], [20, 174]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.84      0.86       177
+           1       0.86      0.90      0.88       194
+
+    accuracy                           0.87       371
+   macro avg       0.87      0.87      0.87       371
+weighted avg       0.87      0.87      0.87       371
+
+------------------------------------------------------------

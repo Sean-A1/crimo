@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250409, match_id=LAD@WSH
+n_valid=251
+
+== Sigmoid ==
+Best Threshold: 0.520 (F1=0.9008)
+Accuracy: 0.8964
+Precision: 0.9365
+Recall: 0.8676
+F1: 0.9008
+Brier: 0.07862
+AUC: 0.9574
+Confusion Matrix: [[107, 8], [18, 118]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.86      0.93      0.89       115
+           1       0.94      0.87      0.90       136
+
+    accuracy                           0.90       251
+   macro avg       0.90      0.90      0.90       251
+weighted avg       0.90      0.90      0.90       251
+
+------------------------------------------------------------

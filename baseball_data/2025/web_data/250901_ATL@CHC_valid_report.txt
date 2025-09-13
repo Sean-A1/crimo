@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250901, match_id=ATL@CHC
+n_valid=426
+
+== Sigmoid ==
+Best Threshold: 0.590 (F1=0.9209)
+Accuracy: 0.9202
+Precision: 0.9851
+Recall: 0.8646
+F1: 0.9209
+Brier: 0.06609
+AUC: 0.9644
+Confusion Matrix: [[194, 3], [31, 198]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.86      0.98      0.92       197
+           1       0.99      0.86      0.92       229
+
+    accuracy                           0.92       426
+   macro avg       0.92      0.92      0.92       426
+weighted avg       0.93      0.92      0.92       426
+
+------------------------------------------------------------

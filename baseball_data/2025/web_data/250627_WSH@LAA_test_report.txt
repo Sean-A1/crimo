@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250627, match_id=WSH@LAA
+n_test=356
+
+== Sigmoid == (thr from valid = 0.450)
+Accuracy: 0.8961
+Precision: 0.9205
+Recall: 0.8757
+F1: 0.8975
+Brier: 0.07445
+AUC: 0.9608
+Confusion Matrix: [[157, 14], [23, 162]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.92      0.89       171
+           1       0.92      0.88      0.90       185
+
+    accuracy                           0.90       356
+   macro avg       0.90      0.90      0.90       356
+weighted avg       0.90      0.90      0.90       356
+
+------------------------------------------------------------

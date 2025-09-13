@@ -7,6 +7,9 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py import_players
 python manage.py import_schedules
+python manage.py import_prediction_mlb_classification
+python manage.py import_prediction_mlb_regression
+python manage.py import_prediction_mlb_metrics
 
 # superuser 자동 생성 with 확인 메시지
 echo "🛠 Superuser 생성 시도..."

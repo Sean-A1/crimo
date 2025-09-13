@@ -84,17 +84,9 @@ class Command(BaseCommand):
                                     "position": row.get("position", ""),
                                     "birthday": birthday,
                                     "profile": row.get("profile", ""),
-                                    "school": (
-                                        row.get("school", "") if "school" in row else ""
-                                    ),
-                                    "ai_score": (
-                                        int(row["ai_score"])
-                                        if row.get("ai_score")
-                                        else None
-                                    ),
-                                    "stat": (
-                                        int(row["stat"]) if row.get("stat") else None
-                                    ),
+                                    
+                                
+                                    
                                 },
                             )
 

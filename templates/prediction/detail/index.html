@@ -27,6 +27,21 @@
         🔹 승률 예측: {{ schedule.team1 }}({{ schedule.win_prob_team1 }}%) vs {{ schedule.team2 }}({{ schedule.win_prob_team2 }}%)<br>
     </div>
 
+    {# templates/prediction/detail/index.html 일부 #}
+    <div class="card border-info mb-3">
+    <div class="card-header bg-info text-dark fw-bold">분류 성능지표</div>
+    <div class="card-body">
+        <p class="mb-2 text-muted">
+        최신 예측에 사용한 데이터와 유효성/테스트 성능(혼동행렬, 리포트)을 확인할 수 있습니다.
+        </p>
+        <a class="btn btn-outline-info"
+        href="{% url 'prediction:class_metrics' league date_str away|upper home|upper %}">
+        사용 데이터, 혼동행렬, 성능지표 보기 →
+        </a>
+    </div>
+    </div>
+
+
     <!-- 그래프 섹션 -->
     <div class="card mt-4">
 

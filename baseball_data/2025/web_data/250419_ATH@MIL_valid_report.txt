@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250419, match_id=ATH@MIL
+n_valid=263
+
+== Sigmoid ==
+Best Threshold: 0.390 (F1=0.9225)
+Accuracy: 0.9163
+Precision: 0.9225
+Recall: 0.9225
+F1: 0.9225
+Brier: 0.06332
+AUC: 0.9689
+Confusion Matrix: [[110, 11], [11, 131]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.91      0.91       121
+           1       0.92      0.92      0.92       142
+
+    accuracy                           0.92       263
+   macro avg       0.92      0.92      0.92       263
+weighted avg       0.92      0.92      0.92       263
+
+------------------------------------------------------------

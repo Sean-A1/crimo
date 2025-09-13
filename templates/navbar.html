@@ -20,17 +20,17 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 {% if league %}
-                    <a class="nav-link" href="{% url 'prediction:prediction' league %}">예측</a>
-                    <a class="nav-link" href="{% url 'leaderboards:leaderboard' league %}">랭킹</a>
-                    <a class="nav-link" href="{% url 'team:team_list' league %}">팀/선수</a>
-                    <a class="nav-link" href="{% url 'match:schedule_list' league %}">경기</a>
+                    <a class="nav-link" href="{% url 'prediction:prediction' league %}">Prediction</a>
+                    <a class="nav-link" href="{% url 'leaderboards:leaderboard' league %}">Stats</a>
+                    <a class="nav-link" href="{% url 'team:team_list' league %}">Team/Player</a>
+                    <a class="nav-link" href="{% url 'match:schedule_list' league %}">Schedule</a>
                     
                 {% else %}
                     <!-- 리그 선택 전이므로 링크 비활성 -->
-                    <a class="nav-link disabled" href="#">예측</a>
-                    <a class="nav-link disabled" href="#">랭킹</a>
-                    <a class="nav-link disabled" href="#">팀/선수</a>
-                    <a class="nav-link disabled" href="#">경기</a>
+                    <a class="nav-link disabled" href="#">Prediction</a>
+                    <a class="nav-link disabled" href="#">Stats</a>
+                    <a class="nav-link disabled" href="#">Team/Player</a>
+                    <a class="nav-link disabled" href="#">Schedule</a>
                     
                     
                 {% endif %}

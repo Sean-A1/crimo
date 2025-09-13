@@ -24,10 +24,14 @@ class Player(models.Model):
     position = models.CharField(max_length=20)  # 포지션
     birthday = models.DateField()  # 생년월일
     profile = models.CharField(max_length=100)  # 신체 정보
+    
+    
+    '''
     school = models.TextField()  # 학력
-
     ai_score = models.IntegerField(null=True, blank=True)
     stat = models.IntegerField(null=True, blank=True)
+    '''
+
 
     def __str__(self):
         return f"{self.player_id} ({self.team.team_id})"

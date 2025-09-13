@@ -1,3 +1,4 @@
+{# templates/prediction/index.html #}
 {% extends 'base.html' %}
 {% load static %}
 {% load static_league %}
@@ -38,62 +39,52 @@
         <div class="card-body">
             {% for game in games %}
             <div class="row mb-3 align-items-center">
-                <!-- 이미지 클릭 시 링크 -->
-                <div class="col-md-4">
-                    <a href="{% url 'prediction:pred_detail' league game.month game.date game.team1 game.team2 %}">
-                        {% with "2025"|add:game.month|stringformat:"02d"|add:game.date|stringformat:"02d" as date_str %}
-                        
-                            <!--
-                            <img src="{% static_prediction_image date_str game.team1 game.team2 league %}"
-                                 class="img-fluid rounded">
-                                 -->
 
-                            <img src="{% static 'images/prediction/' %}{{ forloop.counter|add:'-1'|divisibleby:3|yesno:'3,2,1' }}.png"
-                            class="img-fluid rounded">
-                            
-                        {% endwith %}
+                <!-- 썸네일 (어웨이/홈 로고 나란히) -->
+                <div class="col-md-4">
+                    <a href="{% url 'prediction:pred_detail' league game.date_str game.away game.home %}" class="text-decoration-none">
+                        <div class="d-flex align-items-center justify-content-between border rounded p-2">
+                        <img src="{% static 'images/teams/mlb/' %}{{ game.away }}.png" alt="{{ game.away }}" class="img-fluid" style="max-height:64px; width:auto;">
+                        <span class="mx-2 fw-bold">vs</span>
+                        <img src="{% static 'images/teams/mlb/' %}{{ game.home }}.png" alt="{{ game.home }}" class="img-fluid" style="max-height:64px; width:auto;">
+                        </div>
                     </a>
                 </div>
 
-                <!-- 제목 클릭 시 링크 -->
+                <!-- 타이틀도 상세 링크 연결 -->
                 <div class="col-md-8">
-                    <a href="{% url 'prediction:pred_detail' league game.month game.date game.team1 game.team2 %}" class="text-decoration-none text-dark">
+                    <a href="{% url 'prediction:pred_detail' league game.date_str game.away game.home %}" class="text-decoration-none text-dark">
                         <h6>
-                            {{game.team1}} ({{ game.win_prob_team1 }}%) vs {{game.team2}} ({{ game.win_prob_team2 }}%)<br>
-                            Game Prediction by Percentage - {{game.month}}/{{game.date}} <br>
-                            {{ league|upper }} Regular Season
+                        {{ game.away }} ({{ game.away_pct }}%) vs {{ game.home }} ({{ game.home_pct }}%)<br>
+                        Game Prediction by Percentage - {{ game.month }}/{{ game.day }} <br>
+                        {{ league|upper }} Regular Season
                         </h6>
-                    </a>               
+                    </a>
                 </div>
+
             </div>
             <hr>
             {% endfor %}
         </div>
     </div>
     {% empty %}
-    <p>경기 일정이 없습니다.</p>
+    <p>No Match Schedule</p>
     {% endfor %}
 </div>
 
 <!-- script -->
 <script>
-    document.getElementById('datePicker').addEventListener('change', function() {
-        const selectedDate = new Date(this.value);
-        const month = selectedDate.getMonth() + 1;
-        const day = selectedDate.getDate();
-        window.location.href = `?date=${month}/${day}`;
-    });
+  document.getElementById('datePicker').addEventListener('change', function() {
+    const selectedDate = new Date(this.value);
+    const month = selectedDate.getMonth() + 1;
+    const day = selectedDate.getDate();
+    window.location.href = `?date=${month}/${day}`;
+  });
 </script>
 
 <style>
-    input[type="date"]::-webkit-datetime-edit {
-        display: none;
-    }
-    
-    input[type="date"] {
-        width: 40px;
-        padding: 5px;
-    }
+  input[type="date"]::-webkit-datetime-edit { display: none; }
+  input[type="date"] { width: 40px; padding: 5px; }
 </style>
     
 

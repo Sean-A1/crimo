@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250721, match_id=LAA@NYM
+n_test=384
+
+== Sigmoid == (thr from valid = 0.410)
+Accuracy: 0.9036
+Precision: 0.9231
+Recall: 0.8911
+F1: 0.9068
+Brier: 0.06660
+AUC: 0.9647
+Confusion Matrix: [[167, 15], [22, 180]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.92      0.90       182
+           1       0.92      0.89      0.91       202
+
+    accuracy                           0.90       384
+   macro avg       0.90      0.90      0.90       384
+weighted avg       0.90      0.90      0.90       384
+
+------------------------------------------------------------

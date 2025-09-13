@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250727, match_id=TOR@DET
+n_valid=392
+
+== Sigmoid ==
+Best Threshold: 0.400 (F1=0.9205)
+Accuracy: 0.9158
+Precision: 0.9227
+Recall: 0.9183
+F1: 0.9205
+Brier: 0.07417
+AUC: 0.9601
+Confusion Matrix: [[168, 16], [17, 191]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.91      0.91       184
+           1       0.92      0.92      0.92       208
+
+    accuracy                           0.92       392
+   macro avg       0.92      0.92      0.92       392
+weighted avg       0.92      0.92      0.92       392
+
+------------------------------------------------------------

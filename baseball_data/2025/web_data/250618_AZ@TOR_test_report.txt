@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250618, match_id=AZ@TOR
+n_test=330
+
+== Sigmoid == (thr from valid = 0.580)
+Accuracy: 0.8697
+Precision: 0.9252
+Recall: 0.8095
+F1: 0.8635
+Brier: 0.08319
+AUC: 0.9550
+Confusion Matrix: [[151, 11], [32, 136]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.83      0.93      0.88       162
+           1       0.93      0.81      0.86       168
+
+    accuracy                           0.87       330
+   macro avg       0.88      0.87      0.87       330
+weighted avg       0.88      0.87      0.87       330
+
+------------------------------------------------------------

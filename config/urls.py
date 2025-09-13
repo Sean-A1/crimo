@@ -17,6 +17,8 @@ urlpatterns = [
     path("favicon.ico", RedirectView.as_view(url="/static/images/favicon.ico")),
     path("<str:league>/", common_views.league_home, name="league_home"),  # 리그 전용 홈
     path("common/", include("common.urls")),  # 로그인/회원가입 등
+    
+    path("<str:league>/", include(('prediction.urls', 'prediction'), namespace='prediction')),
     path("pybo/", include("pybo.urls")),
     #
     # 리그 기반 URL 구조

@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250525, match_id=SD@ATL
+n_test=305
+
+== Sigmoid == (thr from valid = 0.470)
+Accuracy: 0.9016
+Precision: 0.9384
+Recall: 0.8671
+F1: 0.9013
+Brier: 0.07471
+AUC: 0.9559
+Confusion Matrix: [[138, 9], [21, 137]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.94      0.90       147
+           1       0.94      0.87      0.90       158
+
+    accuracy                           0.90       305
+   macro avg       0.90      0.90      0.90       305
+weighted avg       0.90      0.90      0.90       305
+
+------------------------------------------------------------

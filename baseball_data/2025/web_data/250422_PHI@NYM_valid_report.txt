@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250422, match_id=PHI@NYM
+n_valid=259
+
+== Sigmoid ==
+Best Threshold: 0.680 (F1=0.9154)
+Accuracy: 0.9151
+Precision: 0.9835
+Recall: 0.8561
+F1: 0.9154
+Brier: 0.06831
+AUC: 0.9649
+Confusion Matrix: [[118, 2], [20, 119]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.86      0.98      0.91       120
+           1       0.98      0.86      0.92       139
+
+    accuracy                           0.92       259
+   macro avg       0.92      0.92      0.92       259
+weighted avg       0.92      0.92      0.92       259
+
+------------------------------------------------------------

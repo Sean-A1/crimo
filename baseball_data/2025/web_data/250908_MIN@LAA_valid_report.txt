@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250908, match_id=MIN@LAA
+n_valid=449
+
+== Sigmoid ==
+Best Threshold: 0.540 (F1=0.9260)
+Accuracy: 0.9220
+Precision: 0.9690
+Recall: 0.8866
+F1: 0.9260
+Brier: 0.06794
+AUC: 0.9598
+Confusion Matrix: [[195, 7], [28, 219]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.97      0.92       202
+           1       0.97      0.89      0.93       247
+
+    accuracy                           0.92       449
+   macro avg       0.92      0.93      0.92       449
+weighted avg       0.93      0.92      0.92       449
+
+------------------------------------------------------------

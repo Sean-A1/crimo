@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250810, match_id=TB@SEA
+n_valid=409
+
+== Sigmoid ==
+Best Threshold: 0.560 (F1=0.9254)
+Accuracy: 0.9267
+Precision: 0.9841
+Recall: 0.8732
+F1: 0.9254
+Brier: 0.06334
+AUC: 0.9647
+Confusion Matrix: [[193, 3], [27, 186]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.98      0.93       196
+           1       0.98      0.87      0.93       213
+
+    accuracy                           0.93       409
+   macro avg       0.93      0.93      0.93       409
+weighted avg       0.93      0.93      0.93       409
+
+------------------------------------------------------------

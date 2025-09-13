@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250729, match_id=PHI@CWS
+n_test=395
+
+== Sigmoid == (thr from valid = 0.560)
+Accuracy: 0.9241
+Precision: 0.9554
+Recall: 0.9019
+F1: 0.9279
+Brier: 0.06061
+AUC: 0.9695
+Confusion Matrix: [[172, 9], [21, 193]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.89      0.95      0.92       181
+           1       0.96      0.90      0.93       214
+
+    accuracy                           0.92       395
+   macro avg       0.92      0.93      0.92       395
+weighted avg       0.93      0.92      0.92       395
+
+------------------------------------------------------------

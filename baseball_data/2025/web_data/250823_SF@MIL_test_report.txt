@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250823, match_id=SF@MIL
+n_test=418
+
+== Sigmoid == (thr from valid = 0.420)
+Accuracy: 0.8971
+Precision: 0.9039
+Recall: 0.9079
+F1: 0.9059
+Brier: 0.06761
+AUC: 0.9626
+Confusion Matrix: [[168, 22], [21, 207]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.89      0.88      0.89       190
+           1       0.90      0.91      0.91       228
+
+    accuracy                           0.90       418
+   macro avg       0.90      0.90      0.90       418
+weighted avg       0.90      0.90      0.90       418
+
+------------------------------------------------------------

@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250430, match_id=AZ@NYM
+n_valid=268
+
+== Sigmoid ==
+Best Threshold: 0.420 (F1=0.9319)
+Accuracy: 0.9291
+Precision: 0.9353
+Recall: 0.9286
+F1: 0.9319
+Brier: 0.05752
+AUC: 0.9765
+Confusion Matrix: [[119, 9], [10, 130]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.92      0.93      0.93       128
+           1       0.94      0.93      0.93       140
+
+    accuracy                           0.93       268
+   macro avg       0.93      0.93      0.93       268
+weighted avg       0.93      0.93      0.93       268
+
+------------------------------------------------------------

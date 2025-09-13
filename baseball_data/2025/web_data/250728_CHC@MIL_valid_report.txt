@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250728, match_id=CHC@MIL
+n_valid=393
+
+== Sigmoid ==
+Best Threshold: 0.430 (F1=0.9091)
+Accuracy: 0.9059
+Precision: 0.9296
+Recall: 0.8894
+F1: 0.9091
+Brier: 0.07258
+AUC: 0.9610
+Confusion Matrix: [[171, 14], [23, 185]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.92      0.90       185
+           1       0.93      0.89      0.91       208
+
+    accuracy                           0.91       393
+   macro avg       0.91      0.91      0.91       393
+weighted avg       0.91      0.91      0.91       393
+
+------------------------------------------------------------

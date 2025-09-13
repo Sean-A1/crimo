@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250702, match_id=DET@WSH
+n_valid=346
+
+== Sigmoid ==
+Best Threshold: 0.430 (F1=0.8977)
+Accuracy: 0.8960
+Precision: 0.9080
+Recall: 0.8876
+F1: 0.8977
+Brier: 0.07750
+AUC: 0.9547
+Confusion Matrix: [[152, 16], [20, 158]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.90      0.89       168
+           1       0.91      0.89      0.90       178
+
+    accuracy                           0.90       346
+   macro avg       0.90      0.90      0.90       346
+weighted avg       0.90      0.90      0.90       346
+
+------------------------------------------------------------

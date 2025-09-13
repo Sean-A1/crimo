@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250407, match_id=NYY@DET
+n_valid=248
+
+== Sigmoid ==
+Best Threshold: 0.670 (F1=0.8971)
+Accuracy: 0.8992
+Precision: 0.9820
+Recall: 0.8258
+F1: 0.8971
+Brier: 0.07996
+AUC: 0.9547
+Confusion Matrix: [[114, 2], [23, 109]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.83      0.98      0.90       116
+           1       0.98      0.83      0.90       132
+
+    accuracy                           0.90       248
+   macro avg       0.91      0.90      0.90       248
+weighted avg       0.91      0.90      0.90       248
+
+------------------------------------------------------------

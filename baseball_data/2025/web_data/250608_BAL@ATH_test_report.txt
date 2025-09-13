@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250608, match_id=BAL@ATH
+n_test=332
+
+== Sigmoid == (thr from valid = 0.600)
+Accuracy: 0.8795
+Precision: 0.9452
+Recall: 0.8118
+F1: 0.8734
+Brier: 0.08380
+AUC: 0.9533
+Confusion Matrix: [[154, 8], [32, 138]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.83      0.95      0.89       162
+           1       0.95      0.81      0.87       170
+
+    accuracy                           0.88       332
+   macro avg       0.89      0.88      0.88       332
+weighted avg       0.89      0.88      0.88       332
+
+------------------------------------------------------------

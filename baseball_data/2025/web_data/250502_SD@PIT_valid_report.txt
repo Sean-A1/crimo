@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250502, match_id=SD@PIT
+n_valid=271
+
+== Sigmoid ==
+Best Threshold: 0.420 (F1=0.9301)
+Accuracy: 0.9262
+Precision: 0.9366
+Recall: 0.9236
+F1: 0.9301
+Brier: 0.06179
+AUC: 0.9709
+Confusion Matrix: [[118, 9], [11, 133]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.93      0.92       127
+           1       0.94      0.92      0.93       144
+
+    accuracy                           0.93       271
+   macro avg       0.93      0.93      0.93       271
+weighted avg       0.93      0.93      0.93       271
+
+------------------------------------------------------------

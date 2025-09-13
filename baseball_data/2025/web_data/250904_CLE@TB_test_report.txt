@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250904, match_id=CLE@TB
+n_test=445
+
+== Sigmoid == (thr from valid = 0.560)
+Accuracy: 0.9169
+Precision: 0.9548
+Recall: 0.8866
+F1: 0.9194
+Brier: 0.07368
+AUC: 0.9571
+Confusion Matrix: [[197, 10], [27, 211]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.95      0.91       207
+           1       0.95      0.89      0.92       238
+
+    accuracy                           0.92       445
+   macro avg       0.92      0.92      0.92       445
+weighted avg       0.92      0.92      0.92       445
+
+------------------------------------------------------------
