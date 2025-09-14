@@ -10,6 +10,7 @@ python manage.py import_schedules
 python manage.py import_prediction_mlb_classification
 python manage.py import_prediction_mlb_regression
 python manage.py import_prediction_mlb_metrics
+python manage.py import_mlb_player_stats
 
 # superuser 자동 생성 with 확인 메시지
 echo "🛠 Superuser 생성 시도..."

@@ -22,31 +22,24 @@
                 {% if league %}
                     <a class="nav-link" href="{% url 'prediction:prediction' league %}">Prediction</a>
                     <a class="nav-link" href="{% url 'leaderboards:leaderboard' league %}">Stats</a>
-                    
-
                     <a class="nav-link" href="{% url 'team:team_list' league %}">Team/Player</a>
                     <a class="nav-link" href="{% url 'match:schedule_list' league %}">Schedule</a>
                     
                 {% else %}
                     <!-- 리그 선택 전이므로 링크 비활성 -->
                     <a class="nav-link disabled" href="#">Prediction</a>
-
                     <a class="nav-link disabled" href="#">Stats</a>
-                    
-
                     <a class="nav-link disabled" href="#">Team/Player</a>
                     <a class="nav-link disabled" href="#">Schedule</a>
-                    
-                    
                 {% endif %}
 
 
                 <!-- 게시판-->
-                <!--
+                {% comment %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pybo:index' %}">게시판</a>
                 </li>
-                -->
+                {% endcomment %}
                 
             </ul>
 
@@ -57,7 +50,7 @@
                 <!-- 현재 리그 상태 표시 -->
                 {% if request.session.league and request.resolver_match.url_name != "home1" %}
                     <span class="navbar-text ms-3">
-                        현재 선택된 리그: <strong>{{ request.session.league|upper }}</strong>
+                        League : <strong>{{ request.session.league|upper }}</strong>
                     </span>
                 {% endif %}
                 

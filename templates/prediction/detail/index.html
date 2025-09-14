@@ -12,33 +12,32 @@
 <div class="container my-4">
 
     <!-- 제목 -->
-    <h2 class="mb-4">{{ schedule.team1 }} vs {{ schedule.team2 }} 상세 예측정보</h2>
+    <h2 class="mb-4"> Prediction detail Info</h2>
 
     <!-- 연노랑색 업데이트 현황 박스 -->
     <div class="alert alert-warning">
-        📌 업데이트 현황: 2025년 {{ schedule.month }}월 {{ schedule.date }}일 예측 데이터 업데이트
+      📌 New Update : {{ date|date:"n" }}.{{ date|date:"j" }}.{{ date|date:"Y" }}
     </div>
 
     <!-- 연초록색 상세 정보 박스 -->
     <div class="alert alert-success">
-        📋 <strong>상세 정보</strong><br>
-        🔹 날짜: {{ schedule.month }}/{{ schedule.date }}<br>
-        🔹 경기장: {{ schedule.stadium }}<br>
-        🔹 승률 예측: {{ schedule.team1 }}({{ schedule.win_prob_team1 }}%) vs {{ schedule.team2 }}({{ schedule.win_prob_team2 }}%)<br>
+      📋 <strong>Information</strong><br>
+      🔹 Date : {{ date|date:"m/d" }}<br>
+      <!-- Stadium은 일정 모델에서만 있으니 제거 -->
+      🔹 Prediction : {{ team1 }}({{ win_prob_team1|default:"-" }}%) vs {{ team2 }}({{ win_prob_team2|default:"-" }}%)<br>
     </div>
+    
 
     <div class="row g-3 mb-3">
         <!-- 분류 성능지표 -->
         <div class="col-12 col-lg-6">
             <div class="card h-100 border-info">
-            <div class="card-header bg-info text-dark fw-bold">분류 성능지표</div>
+            <div class="card-header bg-info text-dark fw-bold">Classification Evaluation Metrics</div>
             <div class="card-body">
-                <p class="mb-2 text-muted">
-                최신 예측에 사용한 데이터와 유효성/테스트 성능(혼동행렬, 리포트)을 확인할 수 있습니다.
-                </p>
+                <p class="mb-2 text-muted">You can check the data used for the latest predictions and the validation/test performance (Confusion Matrix, Report)</p>
                 <a class="btn btn-outline-info"
                 href="{% url 'prediction:class_metrics' league date_str away|upper home|upper %}">
-                사용 데이터, 혼동행렬, 성능지표 보기 →
+                View used data, Confusion Matrix, Evaluation Metrics →
                 </a>
             </div>
             </div>
@@ -47,14 +46,14 @@
         <!-- 회귀 상세지표 -->
         <div class="col-12 col-lg-6">
             <div class="card h-100 border-info">
-            <div class="card-header bg-info text-dark fw-bold">회귀 상세지표</div>
+            <div class="card-header bg-info text-dark fw-bold">Regression Evaluation Metrics</div>
             <div class="card-body">
                 <p class="mb-3 text-muted small">
-                선발투수(실제/예측), 투수 교체 로그, 게임 PK 등 세부 로그를 확인합니다.
+                  Check detailed logs such as starting pitchers (actual/predicted), pitcher change logs, and game PKs
                 </p>
                 <a class="btn btn-outline-info"
                 href="{% url 'prediction:reg_metrics' league date_str away|upper home|upper %}">
-                사용 데이터 / 상세 로그 보기 →
+                View used data, detailed logs
                 </a>
             </div>
             </div>
@@ -68,7 +67,7 @@
 
         <!-- 득점 -->
         <div class="card-header bg-light">
-            📊 득점 시나리오
+            Scoring Scenario
         </div>
 
         <div class="card-body">
@@ -77,7 +76,7 @@
 
         <!-- 총 득점 -->
         <div class="card-header bg-light">
-            📊 총 득점 시나리오
+            Cumulative Scoring Scenario
         </div>
 
         <div class="card-body">
@@ -92,7 +91,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const inning_labels = ['1회','2회','3회','4회','5회','6회','7회','8회','9회'];
+  const inning_labels = ['1st inn','2nd inn','3rd inn','4th inn','5th inn','6th inn','7th inn','8th inn','9th inn'];
 
   // Django 컨텍스트에서 가져오기
   const predAway = {{ scenario_team1|safe }};   // away 예측
@@ -131,7 +130,7 @@
       labels: inning_labels,
       datasets: [
         {
-          label: '{{ away }} (예측)',
+          label: '{{ away }} (Pred)',
           data: predAway,
           borderWidth: 2,
           backgroundColor: 'rgba(255, 99, 132, 0.15)',
@@ -139,7 +138,7 @@
           pointRadius: 2,
         },
         {
-          label: '{{ home }} (예측)',
+          label: '{{ home }} (Pred)',
           data: predHome,
           borderWidth: 2,
           backgroundColor: 'rgba(54, 162, 235, 0.15)',
@@ -147,7 +146,7 @@
           pointRadius: 2,
         },
         {
-          label: '{{ away }} (실제)',
+          label: '{{ away }} (Final)',
           data: actAway,
           borderWidth: 2,
           borderDash: [6,4],
@@ -157,7 +156,7 @@
           hidden: hideActAway,
         },
         {
-          label: '{{ home }} (실제)',
+          label: '{{ home }} (Final)',
           data: actHome,
           borderWidth: 2,
           borderDash: [6,4],
@@ -185,7 +184,7 @@
       labels: inning_labels,
       datasets: [
         {
-          label: '{{ away }} 총 득점 (예측)',
+          label: '{{ away }}-Cumul (Pred)',
           data: cumPredAway,
           borderWidth: 2,
           backgroundColor: 'rgba(255, 206, 86, 0.15)',
@@ -193,7 +192,7 @@
           pointRadius: 2,
         },
         {
-          label: '{{ home }} 총 득점 (예측)',
+          label: '{{ home }}-Cumul (Pred)',
           data: cumPredHome,
           borderWidth: 2,
           backgroundColor: 'rgba(75, 192, 192, 0.15)',
@@ -201,7 +200,7 @@
           pointRadius: 2,
         },
         {
-          label: '{{ away }} 총 득점 (실제)',
+          label: '{{ away }}-Cumul (Final)',
           data: cumActAway,
           borderWidth: 2,
           borderDash: [6,4],
@@ -211,7 +210,7 @@
           hidden: hideCumActAway,
         },
         {
-          label: '{{ home }} 총 득점 (실제)',
+          label: '{{ home }}-Cumul (Final)',
           data: cumActHome,
           borderWidth: 2,
           borderDash: [6,4],

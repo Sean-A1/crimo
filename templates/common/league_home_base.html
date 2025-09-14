@@ -10,56 +10,146 @@
     </div>
 
     <!-- 메인 이벤트 -->
-    <div class="card mx-auto shadow-sm" style="max-width: 600px;">
+    <div class="card mx-auto shadow-sm" style="max-width: 720px;">
         <div class="card-body">
-            <h4 class="card-title mb-4">🎉 이번 주 메인 이벤트</h4>
+            <h4 class="card-title mb-4">Main Event of the week</h4>
 
-
-            <!-- 승률 예측 -->
             {% if main_event %}
-                <h5>{{ main_event.month }}/{{ main_event.date }} ({{ main_event.day }})</h5>
-                <p><strong>{{ main_event.time }}</strong>&emsp; {{ main_event.stadium }}</p>
+                <h5 class="mb-1">{{ main_event.month }}/{{ main_event.date }} ({{ main_event.day }})</h5>
+
+                {% if main_event.time or main_event.stadium %}
+                    <p class="text-muted mb-2">
+                        {% if main_event.time %}<strong>{{ main_event.time }}</strong>&ensp;{% endif %}
+                        {% if main_event.stadium %}{{ main_event.stadium }}{% endif %}
+                    </p>
+                {% endif %}
 
                 <div class="d-flex align-items-center justify-content-center my-3">
                     <div class="me-4 text-center">
-                        <img src="{% static 'images/teams/'|add:main_event.league|add:'/'|add:main_event.team1|add:'.png' %}" 
-                             style="height: 50px; object-fit: contain;">
-                        <h5 class="mt-2">{{ main_event.team1 }}</h5>
-                        <span class="badge bg-primary">{{ main_event.win_prob_team1 }}%</span>
+                        <img src="{% static 'images/teams/' %}{{ main_event.league }}/{{ main_event.team1 }}.png"
+                            style="height: 54px; object-fit: contain;" alt="{{ main_event.team1 }}">
+                        <h5 class="mt-2 mb-1">{{ main_event.team1 }}</h5>
+                        <span class="badge bg-primary">{{ main_event.win_prob_team1|default:"-" }}%</span>
                     </div>
 
                     <span class="mx-3 fs-4">VS</span>
 
                     <div class="ms-4 text-center">
-                        <img src="{% static 'images/teams/'|add:main_event.league|add:'/'|add:main_event.team2|add:'.png' %}" 
-                             style="height: 50px; object-fit: contain;">
-                        <h5 class="mt-2">{{ main_event.team2 }}</h5>
-                        <span class="badge bg-danger">{{ main_event.win_prob_team2 }}%</span>
+                        <img src="{% static 'images/teams/' %}{{ main_event.league }}/{{ main_event.team2 }}.png"
+                            style="height: 54px; object-fit: contain;" alt="{{ main_event.team2 }}">
+                        <h5 class="mt-2 mb-1">{{ main_event.team2 }}</h5>
+                        <span class="badge bg-danger">{{ main_event.win_prob_team2|default:"-" }}%</span>
                     </div>
                 </div>
 
-                <small class="text-muted">Game Prediction by Percentage</small><br>
-                <small class="text-muted">{{ league|upper }} Regular Season</small>
+                <small class="text-muted d-block">Game Prediction by Percentage</small>
+                <small class="text-muted d-block mb-3">{{ league|upper }} Regular Season</small>
+
+                <!-- 상세 보기 버튼 -->
+                {% if main_event.has_pred %}
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a class="btn btn-sm btn-outline-secondary"
+                            href="{% url 'prediction:pred_detail' league main_event.date_str main_event.team1 main_event.team2 %}">
+                            View details →
+                        </a>
+                    </div>
+                {% endif %}
+
+                <!-- 그래프 -->
+                {% if main_event.has_pred and main_event.scenario_team1 and main_event.scenario_team2 %}
+                    <div class="mt-4">
+                        <canvas id="mainEventCumulativeChart"></canvas>
+                    </div>
+                {% endif %}
+
             {% else %}
-                <p class="text-muted">⚠️ Admin이 경기를 등록하지 않았습니다.</p>
+                <p class="text-muted">Main Event is not available</p>
             {% endif %}
-
-
-            <!-- 총 득점 그래프 -->
-            {% if main_event and main_event.scenario_team1 and main_event.scenario_team2 %}
-                {% include "components/cumulative_scenario.html" %}
-            {% else %}
-            {% endif %}
-
         </div>
     </div>
+</div>
 
+{% if main_event and main_event.scenario_team1 and main_event.scenario_team2 %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labelInnings = ['1st inn','2nd inn','3rd inn','4th inn','5th inn','6th inn','7th inn','8th inn','9th inn'];
 
+    const predAway = {{ main_event.scenario_team1|safe }};  // away 예측
+    const predHome = {{ main_event.scenario_team2|safe }};  // home 예측
+    const actAway  = {{ main_event.actual_team1|default:"[]"|safe }}; // away 실제(없으면 [])
+    const actHome  = {{ main_event.actual_team2|default:"[]"|safe }}; // home 실제(없으면 [])
 
-    
+    function cumulative(arr) {
+      if (!Array.isArray(arr) || arr.length === 0) return [];
+      const out = [];
+      arr.reduce((acc, cur) => {
+        const v = (acc + (Number(cur) || 0));
+        out.push(v);
+        return v;
+      }, 0);
+      return out;
+    }
 
+    const cumPredAway = cumulative(predAway);
+    const cumPredHome = cumulative(predHome);
+    const cumActAway  = cumulative(actAway);
+    const cumActHome  = cumulative(actHome);
 
-        
+    const hideActAway = (cumActAway.length === 0);
+    const hideActHome = (cumActHome.length === 0);
 
+    new Chart(document.getElementById('mainEventCumulativeChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: labelInnings,
+        datasets: [
+          {
+            label: '{{ main_event.team1 }}-Cuml (pred)',
+            data: cumPredAway,
+            borderWidth: 2,
+            backgroundColor: 'rgba(255, 206, 86, 0.15)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            pointRadius: 2,
+          },
+          {
+            label: '{{ main_event.team2 }}-Cuml (pred)',
+            data: cumPredHome,
+            borderWidth: 2,
+            backgroundColor: 'rgba(75, 192, 192, 0.15)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            pointRadius: 2,
+          },
+          {
+            label: '{{ main_event.team1 }}-Cuml (Final)',
+            data: cumActAway,
+            borderWidth: 2,
+            borderDash: [6,4],
+            backgroundColor: 'rgba(255, 206, 86, 0.05)',
+            borderColor: 'rgba(255, 206, 86, 0.7)',
+            pointRadius: 2,
+            hidden: hideActAway,
+          },
+          {
+            label: '{{ main_event.team2 }}-Cuml (Final)',
+            data: cumActHome,
+            borderWidth: 2,
+            borderDash: [6,4],
+            backgroundColor: 'rgba(75, 192, 192, 0.05)',
+            borderColor: 'rgba(75, 192, 192, 0.7)',
+            pointRadius: 2,
+            hidden: hideActHome,
+          },
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: 'nearest', intersect: false },
+        scales: {
+          y: { beginAtZero: true, ticks: { stepSize: 1 } }
+        }
+      }
+    });
+  </script>
+{% endif %}
 
 {% endblock %}

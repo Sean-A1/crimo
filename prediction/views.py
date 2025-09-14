@@ -77,17 +77,39 @@ def pred_detail(request, league=None, date_str=None, away=None, home=None):
     # 실제 이닝 (없으면 빈 배열)
     act_away = obj._split_nums(obj.act_inn_away or "")
     act_home = obj._split_nums(obj.act_inn_home or "")
+    
+    # 분류 예측 확률 가져오기
+    cls = MlbPredClass.objects.filter(
+        date_str=date_str,
+        away_norm=obj.away_norm,
+        home_norm=obj.home_norm,
+    ).first()
+    away_pct = cls.away_pct if cls else None  # away팀 승률(%)
+    home_pct = cls.home_pct if cls else None  # home팀 승률(%)
 
     ctx = {
         "league": (league or "mlb").lower(),
+        "date": obj.date,
         "date_str": date_str,
+        
+        
+        # 템플릿에서 쓰는 키 이름 맞춰 주기
+        "team1": obj.away_norm,   # = away
+        "team2": obj.home_norm,   # = home
+        "win_prob_team1": away_pct,
+        "win_prob_team2": home_pct,
+        
+        # 기존 키(away/home)를 계속 쓰고 싶으면 유지
         "away": obj.away_norm,
         "home": obj.home_norm,
+        
+        # 그래프 데이터
         "scenario_team1": pred_away,   # away (예측)
         "scenario_team2": pred_home,   # home (예측)
         "actual_team1": act_away,      # away (실제)
         "actual_team2": act_home,      # home (실제)
-        "date": obj.date,
+        
+        
     }
     return render(request, "prediction/detail/index.html", ctx)
 

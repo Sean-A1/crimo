@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="container my-5 text-center">
 
     <!-- 마스코트 이미지 -->
@@ -12,26 +13,66 @@
     <!-- 리그 배너 -->
     <div class="d-flex justify-content-center mt-4 gap-3">
 
-        <div class="row justify-content-center mt-4">
-            <div class="col-6 col-md-4 col-lg-3 mb-4">
-                <a href="{% url 'league_home' 'kbo' %}" class="card shadow-sm border-0 text-center league-card">
-                    <img src="{% static 'images/home1/kbo_card_bg.png' %}" class="card-img-top" alt="KBO 배경">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <img src="{% static 'images/league_home/kbo_banner.png' %}" style="height: 30px;" class="mb-2" alt="KBO 로고">
-                        <h5 class="card-title fw-bold mb-0">KBO</h5>
-                    </div>
-                </a>
-            </div>
         
+        <div class="row justify-content-center mt-4">
+
+            <!-- MLB -->
             <div class="col-6 col-md-4 col-lg-3 mb-4">
                 <a href="{% url 'league_home' 'mlb' %}" class="card shadow-sm border-0 text-center league-card">
-                    <img src="{% static 'images/home1/mlb_card_bg.png' %}" class="card-img-top" alt="MLB 배경">
+                    <img src="{% static 'images/home1/mlb_card_bg.png' %}" class="card-img-top" alt="MLB background">
                     <div class="card-body d-flex flex-column align-items-center">
-                        <img src="{% static 'images/league_home/mlb_banner.png' %}" style="height: 30px;" class="mb-2" alt="MLB 로고">
                         <h5 class="card-title fw-bold mb-0">MLB</h5>
                     </div>
                 </a>
             </div>
+
+            <!-- Minor League (MiLB) -->
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm border-0 text-center league-card" aria-disabled="true">
+                    <img src="{% static 'images/home1/milb_card_bg.png' %}" class="card-img-top" alt="MiLB background">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-0">Minor League</h5>
+                        <small class="text-muted mt-1">(Coming Soon)</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NPB -->
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm border-0 text-center league-card" aria-disabled="true">
+                    <img src="{% static 'images/home1/npb_card_bg.png' %}" class="card-img-top" alt="NPB background">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-0">NPB</h5>
+                        <small class="text-muted mt-1">(Coming Soon)</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KBO -->
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm border-0 text-center league-card" aria-disabled="true">
+                    <img src="{% static 'images/home1/kbo_card_bg.png' %}" class="card-img-top" alt="KBO background">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-0">KBO</h5>
+                        <small class="text-muted mt-1">(Coming Soon)</small>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- KBO -->
+            <!--
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <a href="{% url 'league_home' 'kbo' %}" class="card shadow-sm border-0 text-center league-card">
+                    <img src="{% static 'images/home1/kbo_card_bg.png' %}" class="card-img-top" alt="KBO background">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-0">KBO</h5>
+                        <small class="text-muted mt-1">(Coming Soon)</small>
+                    </div>
+                </a>
+            </div>
+            -->
+        
         </div>
         
         

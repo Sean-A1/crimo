@@ -20,7 +20,7 @@ urlpatterns = [
     
     # 리그별 앱 네임스페이스 등록 (중복 없이 한 번만!)
     path("<str:league>/prediction/",  include(("prediction.urls",  "prediction"),  namespace="prediction")),
-    path("<str:league>/leaderboards/", include(("leaderboards.urls","leaderboards"), namespace="leaderboards")),
+    path("<str:league>/stats/", include(("leaderboards.urls", "leaderboards"), namespace="leaderboards")),
     path("<str:league>/team/",         include(("team.urls",        "team"),        namespace="team")),
     path("<str:league>/match/",        include(("match.urls",       "match"),       namespace="match")),
 
