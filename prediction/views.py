@@ -134,7 +134,7 @@ def class_metrics(request, league, date_str, away, home):
     )
     if not obj:
         raise Http404("성능지표가 없습니다.")
-
+    
     ctx = {
         "league": league,
         "date_str": date_str,

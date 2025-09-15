@@ -27,9 +27,9 @@ class MlbPredClass(models.Model):
 
     # 예측값 (홈팀 승률이 proba_sigmoid)
     proba_sigmoid = models.FloatField()
-    proba_isotonic = models.FloatField()
+    proba_isotonic = models.FloatField(null=True, blank=True)  # isotonic 없을 수도
     
-    label = models.IntegerField()  # 실제 결과(있다면)
+    label = models.IntegerField(null=True, blank=True)         # ✅ 라벨 없어도 저장
 
     class Meta:
         unique_together = ("date_str", "away", "home")
