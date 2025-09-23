@@ -1,0 +1,24 @@
+[VALID REPORT] pred_date=250921, match_id=MIA@TEX
+n_valid=456
+
+== Sigmoid ==
+Best Threshold: 0.600 (F1=0.9244)
+Accuracy: 0.9211
+Precision: 0.9735
+Recall: 0.8800
+F1: 0.9244
+Brier: 0.06921
+AUC: 0.9593
+Confusion Matrix: [[200, 6], [30, 220]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.97      0.92       206
+           1       0.97      0.88      0.92       250
+
+    accuracy                           0.92       456
+   macro avg       0.92      0.93      0.92       456
+weighted avg       0.93      0.92      0.92       456
+
+------------------------------------------------------------

@@ -2,23 +2,23 @@
 n_valid=457
 
 == Sigmoid ==
-Best Threshold: 0.610 (F1=0.9231)
-Accuracy: 0.9212
-Precision: 0.9818
-Recall: 0.8710
-F1: 0.9231
-Brier: 0.06501
-AUC: 0.9638
-Confusion Matrix: [[205, 4], [32, 216]]
+Best Threshold: 0.450 (F1=0.9199)
+Accuracy: 0.9147
+Precision: 0.9372
+Recall: 0.9032
+F1: 0.9199
+Brier: 0.06463
+AUC: 0.9649
+Confusion Matrix: [[194, 15], [24, 224]]
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.86      0.98      0.92       209
-           1       0.98      0.87      0.92       248
+           0       0.89      0.93      0.91       209
+           1       0.94      0.90      0.92       248
 
-    accuracy                           0.92       457
-   macro avg       0.92      0.93      0.92       457
-weighted avg       0.93      0.92      0.92       457
+    accuracy                           0.91       457
+   macro avg       0.91      0.92      0.91       457
+weighted avg       0.92      0.91      0.91       457
 
 ------------------------------------------------------------

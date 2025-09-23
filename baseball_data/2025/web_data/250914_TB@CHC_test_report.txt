@@ -1,23 +1,23 @@
 [TEST REPORT] pred_date=250914, match_id=TB@CHC
 n_test=453
 
-== Sigmoid == (thr from valid = 0.570)
-Accuracy: 0.9117
-Precision: 0.9533
-Recall: 0.8718
-F1: 0.9107
-Brier: 0.06379
-AUC: 0.9690
-Confusion Matrix: [[209, 10], [30, 204]]
+== Sigmoid == (thr from valid = 0.610)
+Accuracy: 0.9227
+Precision: 0.9628
+Recall: 0.8846
+F1: 0.9220
+Brier: 0.06963
+AUC: 0.9647
+Confusion Matrix: [[211, 8], [27, 207]]
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.87      0.95      0.91       219
-           1       0.95      0.87      0.91       234
+           0       0.89      0.96      0.92       219
+           1       0.96      0.88      0.92       234
 
-    accuracy                           0.91       453
-   macro avg       0.91      0.91      0.91       453
-weighted avg       0.92      0.91      0.91       453
+    accuracy                           0.92       453
+   macro avg       0.92      0.92      0.92       453
+weighted avg       0.93      0.92      0.92       453
 
 ------------------------------------------------------------

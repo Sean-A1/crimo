@@ -1,23 +1,23 @@
 [TEST REPORT] pred_date=250914, match_id=COL@SD
 n_test=459
 
-== Sigmoid == (thr from valid = 0.610)
-Accuracy: 0.9085
-Precision: 0.9635
-Recall: 0.8612
-F1: 0.9095
-Brier: 0.06382
-AUC: 0.9696
-Confusion Matrix: [[206, 8], [34, 211]]
+== Sigmoid == (thr from valid = 0.450)
+Accuracy: 0.8932
+Precision: 0.9083
+Recall: 0.8898
+F1: 0.8990
+Brier: 0.06469
+AUC: 0.9689
+Confusion Matrix: [[192, 22], [27, 218]]
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.86      0.96      0.91       214
-           1       0.96      0.86      0.91       245
+           0       0.88      0.90      0.89       214
+           1       0.91      0.89      0.90       245
 
-    accuracy                           0.91       459
-   macro avg       0.91      0.91      0.91       459
-weighted avg       0.91      0.91      0.91       459
+    accuracy                           0.89       459
+   macro avg       0.89      0.89      0.89       459
+weighted avg       0.89      0.89      0.89       459
 
 ------------------------------------------------------------

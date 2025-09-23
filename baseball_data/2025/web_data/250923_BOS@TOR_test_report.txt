@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250923, match_id=BOS@TOR
+n_test=460
+
+== Sigmoid == (thr from valid = 0.550)
+Accuracy: 0.9109
+Precision: 0.9561
+Recall: 0.8755
+F1: 0.9140
+Brier: 0.06425
+AUC: 0.9695
+Confusion Matrix: [[201, 10], [31, 218]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.87      0.95      0.91       211
+           1       0.96      0.88      0.91       249
+
+    accuracy                           0.91       460
+   macro avg       0.91      0.91      0.91       460
+weighted avg       0.91      0.91      0.91       460
+
+------------------------------------------------------------

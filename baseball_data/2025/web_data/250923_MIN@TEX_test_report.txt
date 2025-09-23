@@ -1,0 +1,23 @@
+[TEST REPORT] pred_date=250923, match_id=MIN@TEX
+n_test=455
+
+== Sigmoid == (thr from valid = 0.430)
+Accuracy: 0.8945
+Precision: 0.8776
+Recall: 0.9227
+F1: 0.8996
+Brier: 0.06170
+AUC: 0.9720
+Confusion Matrix: [[192, 30], [18, 215]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.86      0.89       222
+           1       0.88      0.92      0.90       233
+
+    accuracy                           0.89       455
+   macro avg       0.90      0.89      0.89       455
+weighted avg       0.90      0.89      0.89       455
+
+------------------------------------------------------------

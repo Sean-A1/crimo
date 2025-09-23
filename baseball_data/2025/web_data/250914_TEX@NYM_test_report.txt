@@ -1,20 +1,20 @@
 [TEST REPORT] pred_date=250914, match_id=TEX@NYM
 n_test=443
 
-== Sigmoid == (thr from valid = 0.480)
-Accuracy: 0.9074
-Precision: 0.9336
-Recall: 0.8903
-F1: 0.9114
-Brier: 0.06776
-AUC: 0.9614
-Confusion Matrix: [[191, 15], [26, 211]]
+== Sigmoid == (thr from valid = 0.590)
+Accuracy: 0.9052
+Precision: 0.9577
+Recall: 0.8608
+F1: 0.9067
+Brier: 0.06595
+AUC: 0.9648
+Confusion Matrix: [[197, 9], [33, 204]]
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.88      0.93      0.90       206
-           1       0.93      0.89      0.91       237
+           0       0.86      0.96      0.90       206
+           1       0.96      0.86      0.91       237
 
     accuracy                           0.91       443
    macro avg       0.91      0.91      0.91       443
